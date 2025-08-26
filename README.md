@@ -1,36 +1,160 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mystic - Epic Gaming Adventure
 
-## Getting Started
+A modern Next.js 14 project showcasing a gaming landing page with stunning animations and responsive design.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Next.js 14** with App Router and TypeScript
+- **Tailwind CSS** for modern, responsive styling
+- **shadcn/ui** components for consistent design
+- **Framer Motion** for smooth animations
+- **ESLint + Prettier** for code quality
+- **Commit hooks** with lefthook
+- **Absolute imports** with `@/*` alias
+- **Sticky navbar** and responsive footer
+- **Hero section** with animated content
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Components**: shadcn/ui
+- **Animations**: Framer Motion
+- **Package Manager**: pnpm
+- **Linting**: ESLint + Prettier
+- **Git Hooks**: lefthook
+
+## 📦 Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone <your-repo-url>
+   cd mystic
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   pnpm install
+   ```
+
+3. **Set up lefthook (optional)**
+   ```bash
+   pnpm lefthook install
+   ```
+
+## 🚀 Available Scripts
+
+- **`pnpm dev`** - Start development server with Turbopack
+- **`pnpm build`** - Build for production with Turbopack
+- **`pnpm start`** - Start production server
+- **`pnpm lint`** - Run ESLint
+- **`pnpm lint:fix`** - Fix ESLint issues automatically
+- **`pnpm typecheck`** - Run TypeScript type checking
+- **`pnpm format`** - Format code with Prettier
+- **`pnpm format:check`** - Check code formatting
+
+## 🏗️ Project Structure
+
+```
+mystic/
+├── src/
+│   ├── app/                 # Next.js App Router
+│   │   ├── layout.tsx      # Root layout with navbar/footer
+│   │   ├── page.tsx        # Home page
+│   │   └── globals.css     # Global styles
+│   ├── components/          # Reusable components
+│   │   ├── ui/             # shadcn/ui components
+│   │   ├── layout/         # Layout components
+│   │   └── sections/       # Page sections
+│   └── lib/                # Utility functions
+├── public/                  # Static assets
+├── .eslintrc.json          # ESLint configuration
+├── .prettierrc             # Prettier configuration
+├── lefthook.yml            # Git hooks configuration
+├── tailwind.config.ts      # Tailwind CSS configuration
+└── tsconfig.json           # TypeScript configuration
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎨 Components
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Layout Components
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **`Navbar`** - Sticky navigation with animated logo and menu
+- **`Footer`** - Responsive footer with links and social media
 
-## Learn More
+### UI Components
 
-To learn more about Next.js, take a look at the following resources:
+- **`Button`** - Customizable button component
+- **`Card`** - Card container with hover effects
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Sections
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **`Hero`** - Landing hero section with animated content
 
-## Deploy on Vercel
+## 🔧 Configuration
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### ESLint
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Configured with TypeScript support, Next.js rules, and Prettier integration.
+
+### Prettier
+
+Set up with common formatting rules for consistent code style.
+
+### Tailwind CSS
+
+Configured with custom color schemes and responsive utilities.
+
+### Git Hooks
+
+Lefthook runs linting, type checking, and formatting checks before commits.
+
+## 🚀 Deployment
+
+The project is ready for deployment on platforms like:
+
+- Vercel (recommended for Next.js)
+- Netlify
+- Railway
+- Any Node.js hosting platform
+
+## 📱 Responsive Design
+
+- Mobile-first approach
+- Responsive navigation
+- Adaptive layouts for all screen sizes
+- Touch-friendly interactions
+
+## 🎭 Animations
+
+- Smooth page transitions
+- Hover effects on interactive elements
+- Staggered animations for content
+- Floating background elements
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Run linting and type checking
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🆘 Support
+
+If you encounter any issues or have questions, please:
+
+1. Check the existing issues
+2. Create a new issue with detailed information
+3. Contact the development team
+
+---
+
+Built with ❤️ using Next.js, Tailwind CSS, and Framer Motion
