@@ -1,7 +1,9 @@
 import './globals.css';
+import './theme.css';
 import type { Metadata } from 'next';
 import { inter, cinzel } from './fonts';
 import { MotionProvider } from '@/components/site/motion-provider';
+import { AuthProvider } from '@/lib/auth/context';
 import { Navbar } from '@/components/site/navbar';
 import { Footer } from '@/components/site/footer';
 
@@ -17,12 +19,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${cinzel.variable}`}>
+    <html lang="en" className={`${inter.variable} ${cinzel.variable} dark`}>
       <body className="min-h-screen flex flex-col">
         <MotionProvider>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <AuthProvider>
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </AuthProvider>
         </MotionProvider>
       </body>
     </html>

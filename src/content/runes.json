@@ -1,0 +1,170 @@
+[
+  {
+    "id": "fehu",
+    "symbol": "ᚠ",
+    "name": "Fehu",
+    "upright": "Wealth, beginnings, abundance",
+    "reversed": "Loss, greed, materialism"
+  },
+  {
+    "id": "uruz",
+    "symbol": "ᚢ",
+    "name": "Uruz",
+    "upright": "Strength, vitality, primal power",
+    "reversed": "Weakness, lack of energy, illness"
+  },
+  {
+    "id": "thurisaz",
+    "symbol": "ᚦ",
+    "name": "Thurisaz",
+    "upright": "Protection, defense, conflict",
+    "reversed": "Vulnerability, attack, danger"
+  },
+  {
+    "id": "ansuz",
+    "symbol": "ᚨ",
+    "name": "Ansuz",
+    "upright": "Communication, wisdom, divine inspiration",
+    "reversed": "Miscommunication, confusion, manipulation"
+  },
+  {
+    "id": "raidho",
+    "symbol": "ᚱ",
+    "name": "Raidho",
+    "upright": "Journey, travel, progress, movement",
+    "reversed": "Obstacles, delays, stagnation"
+  },
+  {
+    "id": "kenaz",
+    "symbol": "ᚲ",
+    "name": "Kenaz",
+    "upright": "Knowledge, creativity, transformation",
+    "reversed": "Ignorance, lack of creativity, stagnation"
+  },
+  {
+    "id": "gebo",
+    "symbol": "ᚷ",
+    "name": "Gebo",
+    "upright": "Gift, partnership, balance, exchange",
+    "reversed": "Imbalance, selfishness, one-sidedness"
+  },
+  {
+    "id": "wunjo",
+    "symbol": "ᚹ",
+    "name": "Wunjo",
+    "upright": "Joy, harmony, success, celebration",
+    "reversed": "Sorrow, disharmony, failure"
+  },
+  {
+    "id": "hagalaz",
+    "symbol": "ᚺ",
+    "name": "Hagalaz",
+    "upright": "Disruption, change, natural forces",
+    "reversed": "Resistance to change, blocked progress"
+  },
+  {
+    "id": "nauthiz",
+    "symbol": "ᚾ",
+    "name": "Nauthiz",
+    "upright": "Need, constraint, patience, endurance",
+    "reversed": "Release, freedom, overcoming obstacles"
+  },
+  {
+    "id": "isa",
+    "symbol": "ᛁ",
+    "name": "Isa",
+    "upright": "Stillness, ice, patience, waiting",
+    "reversed": "Movement, thawing, impatience"
+  },
+  {
+    "id": "jera",
+    "symbol": "ᛃ",
+    "name": "Jera",
+    "upright": "Harvest, reward, cycles, completion",
+    "reversed": "Delayed harvest, unfinished business"
+  },
+  {
+    "id": "eihwaz",
+    "symbol": "ᛇ",
+    "name": "Eihwaz",
+    "upright": "Defense, protection, endurance, yew tree",
+    "reversed": "Vulnerability, weakness, lack of protection"
+  },
+  {
+    "id": "perthro",
+    "symbol": "ᛈ",
+    "name": "Perthro",
+    "upright": "Mystery, chance, fate, destiny",
+    "reversed": "Bad luck, misfortune, negative fate"
+  },
+  {
+    "id": "algiz",
+    "symbol": "ᛉ",
+    "name": "Algiz",
+    "upright": "Protection, defense, connection to divine",
+    "reversed": "Vulnerability, lack of protection, disconnection"
+  },
+  {
+    "id": "sowilo",
+    "symbol": "ᛊ",
+    "name": "Sowilo",
+    "upright": "Success, energy, power, victory",
+    "reversed": "Failure, lack of energy, defeat"
+  },
+  {
+    "id": "tiwaz",
+    "symbol": "ᛏ",
+    "name": "Tiwaz",
+    "upright": "Justice, leadership, victory, honor",
+    "reversed": "Injustice, poor leadership, dishonor"
+  },
+  {
+    "id": "berkano",
+    "symbol": "ᛒ",
+    "name": "Berkano",
+    "upright": "Growth, fertility, new beginnings, rebirth",
+    "reversed": "Stagnation, infertility, blocked growth"
+  },
+  {
+    "id": "ehwaz",
+    "symbol": "ᛖ",
+    "name": "Ehwaz",
+    "upright": "Movement, progress, partnership, trust",
+    "reversed": "Stagnation, lack of trust, broken partnership"
+  },
+  {
+    "id": "mannaz",
+    "symbol": "ᛗ",
+    "name": "Mannaz",
+    "upright": "Humanity, community, cooperation, self",
+    "reversed": "Isolation, selfishness, lack of cooperation"
+  },
+  {
+    "id": "laguz",
+    "symbol": "ᛚ",
+    "name": "Laguz",
+    "upright": "Intuition, emotions, water, flow",
+    "reversed": "Lack of intuition, emotional blockages"
+  },
+  {
+    "id": "ingwaz",
+    "symbol": "ᛜ",
+    "name": "Ingwaz",
+    "upright": "Fertility, growth, internal development",
+    "reversed": "Stagnation, lack of growth, blocked development"
+  },
+  {
+    "id": "dagaz",
+    "symbol": "ᛞ",
+    "name": "Dagaz",
+    "upright": "Breakthrough, transformation, new day",
+    "reversed": "Lack of breakthrough, resistance to change"
+  },
+  {
+    "id": "othala",
+    "symbol": "ᛟ",
+    "name": "Othala",
+    "upright": "Heritage, inheritance, home, family",
+    "reversed": "Loss of heritage, family problems, homelessness"
+  }
+]

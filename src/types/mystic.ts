@@ -1,0 +1,156 @@
+// Mystic Arcade Game Types
+
+// Firebase Timestamp type (will be replaced with actual Firebase import)
+export type Timestamp = any;
+
+// Shared timestamp type to avoid conflicts between admin/client
+export type TimestampLike = Timestamp;
+
+// User Profile Document
+export interface UserDoc {
+  dob?: string; // Date of birth in ISO format
+  xp: number; // Experience points
+  level: number; // Current level
+  streak: number; // Daily streak count
+  proEntitlement?: boolean; // Pro subscription status
+  achievements?: string[]; // Array of achievement IDs
+  lastLoginAt?: TimestampLike; // Last login timestamp for streak calculation
+  createdAt?: TimestampLike; // Account creation timestamp
+}
+
+// Orbs System Document
+export interface OrbsDoc {
+  current: number; // Current orb count
+  max: number; // Maximum orb capacity
+  regenRatePerHour: number; // Orbs regenerated per hour
+  lastRegenAt: Timestamp; // Last regeneration timestamp
+}
+
+// Codex Collection Document
+export interface CodexDoc {
+  runes: string[]; // Array of rune IDs
+  tarot: string[]; // Array of tarot card IDs
+  sigils?: string[]; // Array of sigil IDs (optional)
+}
+
+// Ritual Performance Log
+export interface RitualLog {
+  type: "rune" | "tarot" | "numerology"; // Type of ritual performed
+  mode: "daily" | "single" | "spread" | "deep"; // Ritual mode
+  cards?: Array<{
+    id: string; // Card ID
+    reversed?: boolean; // Whether card is reversed
+    position?: "past" | "present" | "future"; // Position in spread
+  }>; // Array of cards (for tarot rituals)
+  runeId?: string; // Rune ID (for rune rituals)
+  costOrbs: number; // Orbs spent on ritual
+  xpAwarded: number; // Experience points gained
+  seed?: string; // Random seed for ritual generation
+  createdAt: Timestamp; // When ritual was performed
+}
+
+// Features Configuration
+export interface FeaturesConfig {
+  watchToEarnEnabled: boolean; // Whether watch-to-earn is active
+  dailyRitualEnabled: boolean; // Whether daily rituals are available
+  proFeaturesEnabled: boolean; // Whether pro features are unlocked
+  socialFeaturesEnabled: boolean; // Whether social features are active
+  offlineModeEnabled: boolean; // Whether offline play is allowed
+}
+
+// Game State Document
+export interface GameStateDoc {
+  userId: string; // Reference to user
+  lastDailyRitual?: Timestamp; // Last daily ritual timestamp
+  currentStreak: number; // Current daily streak
+  longestStreak: number; // Longest streak achieved
+  totalRituals: number; // Total rituals performed
+  totalXpEarned: number; // Total XP earned
+  achievements: string[]; // Array of achievement IDs
+  preferences: {
+    theme: "light" | "dark" | "auto"; // UI theme preference
+    notifications: boolean; // Notification preferences
+    soundEnabled: boolean; // Sound effects preference
+    musicEnabled: boolean; // Background music preference
+  };
+}
+
+// Rune Definition
+export interface RuneDoc {
+  id: string; // Unique rune identifier
+  name: string; // Rune name
+  meaning: string; // Rune meaning/interpretation
+  element: "fire" | "water" | "earth" | "air" | "spirit"; // Elemental association
+  rarity: "common" | "uncommon" | "rare" | "epic" | "legendary"; // Rarity level
+  xpValue: number; // XP value when used
+  orbCost: number; // Orb cost to cast
+  unlockLevel: number; // Level required to unlock
+  category: "protection" | "wisdom" | "strength" | "healing" | "transformation"; // Rune category
+}
+
+// Tarot Card Definition
+export interface TarotCardDoc {
+  id: string; // Unique card identifier
+  name: string; // Card name
+  meaning: string; // Card meaning/interpretation
+  reversedMeaning: string; // Reversed card meaning
+  suit: "major" | "wands" | "cups" | "swords" | "pentacles"; // Tarot suit
+  number?: number; // Card number (null for major arcana)
+  element: "fire" | "water" | "earth" | "air" | "spirit"; // Elemental association
+  rarity: "common" | "uncommon" | "rare" | "epic" | "legendary"; // Rarity level
+  xpValue: number; // XP value when drawn
+  orbCost: number; // Orb cost to draw
+  unlockLevel: number; // Level required to unlock
+}
+
+// Sigil Definition
+export interface SigilDoc {
+  id: string; // Unique sigil identifier
+  name: string; // Sigil name
+  meaning: string; // Sigil meaning/interpretation
+  power: number; // Sigil power level (1-10)
+  rarity: "common" | "uncommon" | "rare" | "epic" | "legendary"; // Rarity level
+  unlockCondition: string; // How to unlock this sigil
+  xpBonus: number; // XP bonus when sigil is active
+  orbCost: number; // Orb cost to activate
+}
+
+// Achievement Definition
+export interface AchievementDoc {
+  id: string; // Unique achievement identifier
+  name: string; // Achievement name
+  description: string; // Achievement description
+  category: "rituals" | "streaks" | "collection" | "social" | "special"; // Achievement category
+  requirement: number; // Number required to complete
+  xpReward: number; // XP reward for completion
+  orbReward: number; // Orb reward for completion
+  icon: string; // Achievement icon identifier
+  unlockedAt?: Timestamp; // When achievement was unlocked
+}
+
+// Daily Challenge
+export interface DailyChallengeDoc {
+  id: string; // Unique challenge identifier
+  date: string; // Date in YYYY-MM-DD format
+  type: "rune" | "tarot" | "numerology" | "mixed"; // Challenge type
+  description: string; // Challenge description
+  requirement: string; // What needs to be accomplished
+  xpReward: number; // XP reward for completion
+  orbReward: number; // Orb reward for completion
+  completedBy: string[]; // Array of user IDs who completed it
+  expiresAt: Timestamp; // When challenge expires
+}
+
+// Social Interaction
+export interface SocialInteractionDoc {
+  id: string; // Unique interaction identifier
+  type: "friend_request" | "gift" | "challenge" | "message"; // Interaction type
+  fromUserId: string; // User who initiated interaction
+  toUserId: string; // User who receives interaction
+  content?: string; // Message content or gift description
+  status: "pending" | "accepted" | "declined" | "expired"; // Interaction status
+  createdAt: Timestamp; // When interaction was created
+  respondedAt?: Timestamp; // When interaction was responded to
+}
+
+// All types are already exported above
