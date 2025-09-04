@@ -15,6 +15,7 @@ export interface UserDoc {
   proEntitlement?: boolean; // Pro subscription status
   achievements?: string[]; // Array of achievement IDs
   lastLoginAt?: TimestampLike; // Last login timestamp for streak calculation
+  lastWatchAt?: TimestampLike; // Last rewarded ad watch timestamp
   createdAt?: TimestampLike; // Account creation timestamp
 }
 
@@ -52,6 +53,7 @@ export interface RitualLog {
 // Features Configuration
 export interface FeaturesConfig {
   watchToEarnEnabled: boolean; // Whether watch-to-earn is active
+  watchCooldownMin: number; // Cooldown in minutes between rewarded ads
   dailyRitualEnabled: boolean; // Whether daily rituals are available
   proFeaturesEnabled: boolean; // Whether pro features are unlocked
   socialFeaturesEnabled: boolean; // Whether social features are active

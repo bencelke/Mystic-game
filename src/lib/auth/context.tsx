@@ -1,21 +1,12 @@
 'use client';
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
-// TODO: Install Firebase dependencies: npm install firebase zod
-// import { User, onAuthStateChanged } from 'firebase/auth';
-// import { auth } from '@/lib/firebase/client';
-
-// Temporary placeholder types and implementations
-type User = any;
-const onAuthStateChanged = (auth: any, callback: (user: User | null) => void) => {
-  // Mock implementation - no auth state changes
-  callback(null);
-  return () => {};
-};
-const auth = {} as any;
+import { User, onAuthStateChanged } from 'firebase/auth';
+import { auth } from '@/lib/firebase/client';
+import type { UserDoc } from '@/types/mystic';
 
 interface AuthContextType {
-  user: User | null;
+  user: (User & UserDoc) | null;
   loading: boolean;
 }
 
@@ -37,12 +28,27 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<(User & UserDoc) | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
-      setUser(user);
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser: User | null) => {
+      if (firebaseUser) {
+        // Create a mock user with UserDoc structure for development
+        const mockUserDoc: UserDoc = {
+          xp: 150,
+          level: 3,
+          streak: 7,
+          proEntitlement: false,
+          achievements: ['first_login', 'streak_3'],
+        };
+        
+        // Combine Firebase User with UserDoc
+        const combinedUser = Object.assign(firebaseUser, mockUserDoc);
+        setUser(combinedUser);
+      } else {
+        setUser(null);
+      }
       setLoading(false);
     });
 

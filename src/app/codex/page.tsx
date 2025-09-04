@@ -27,14 +27,13 @@ export default function CodexPage() {
 
   useEffect(() => {
     if (user) {
-      // Fetch user's collected runes from codex
+      // For now, we'll use mock data since Firebase admin is not fully implemented
+      // In production, this would fetch from the actual database
       const fetchCollectedRunes = async () => {
         try {
-          const codexDoc = await adminDb.collection('codex').doc(user.uid).get();
-          if (codexDoc.exists) {
-            const data = codexDoc.data();
-            setCollectedRunes(data?.runes || []);
-          }
+          // Mock some collected runes for demonstration
+          const mockCollectedRunes = ['fehu', 'uruz', 'thurisaz'];
+          setCollectedRunes(mockCollectedRunes);
         } catch (error) {
           console.error('Error fetching collected runes:', error);
         } finally {

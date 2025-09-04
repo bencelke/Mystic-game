@@ -4,7 +4,9 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { dailyRuneAction } from './actions';
+import { RequireAuth } from '@/components/auth';
+import { AdModal } from '@/components/ui/ad-modal';
+import { dailyRuneAction, adRuneAction } from './actions';
 import Link from 'next/link';
 
 interface RuneData {
@@ -16,23 +18,26 @@ interface RuneData {
 }
 
 interface DailyRuneResult {
-  rune: RuneData;
-  reversed: boolean;
-  xpAwarded: number;
-  alreadyClaimed: boolean;
+  success: boolean;
+  rune?: RuneData;
+  reversed?: boolean;
+  xpAwarded?: number;
+  alreadyClaimed?: boolean;
+  error?: string;
 }
 
-export default function RunesPage() {
+function RunesPageContent() {
   const [result, setResult] = useState<DailyRuneResult | null>(null);
   const [isFlipped, setIsFlipped] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [showAdModal, setShowAdModal] = useState(false);
 
   useEffect(() => {
     // Get today's rune on mount
     dailyRuneAction().then((response) => {
+      setResult(response);
       if (response.success) {
-        setResult(response);
         // If already claimed, show the rune immediately
         if (response.alreadyClaimed) {
           setIsFlipped(true);
@@ -48,8 +53,26 @@ export default function RunesPage() {
   }, []);
 
   const handleCardClick = () => {
-    if (!isFlipped && result && !result.alreadyClaimed) {
+    if (!isFlipped && result && result.success && !result.alreadyClaimed) {
       setIsFlipped(true);
+    }
+  };
+
+  const handleAdComplete = async () => {
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      const response = await adRuneAction('daily');
+      setResult(response);
+      
+      if (!response.success) {
+        setError(response.error || 'Failed to complete ad ritual');
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unknown error');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -80,7 +103,7 @@ export default function RunesPage() {
     );
   }
 
-  if (!result) {
+  if (!result || !result.success || !result.rune) {
     return (
       <div className="min-h-screen bg-background p-4">
         <div className="mx-auto max-w-4xl">
@@ -171,21 +194,30 @@ export default function RunesPage() {
                         {/* Meaning */}
                         <div className="space-y-2">
                           <div className="text-sm">
-                            <span className="text-gray-200 font-medium">Upright:</span>
-                            <p className="text-gray-300 mt-1">{result.rune.upright}</p>
+                            <span className="text-foreground font-medium">Upright:</span>
+                            <p className="text-muted-foreground mt-1">{result.rune.upright}</p>
                           </div>
                           <div className="text-sm">
-                            <span className="text-amber-400 font-medium italic">Reversed:</span>
-                            <p className="text-amber-300 mt-1 italic">{result.rune.reversed}</p>
+                            <span className="text-yellow-400 font-medium italic">Reversed:</span>
+                            <p className="text-yellow-400/80 mt-1 italic">{result.rune.reversed}</p>
                           </div>
                         </div>
 
                         {/* Status */}
                         <div className="mt-6 p-3 rounded-lg bg-card/50 border border-border">
                           {result.alreadyClaimed ? (
-                            <p className="text-muted-foreground text-sm">
-                              Already claimed today
-                            </p>
+                            <div className="text-center space-y-3">
+                              <p className="text-muted-foreground text-sm">
+                                Already claimed today
+                              </p>
+                              <Button
+                                onClick={() => setShowAdModal(true)}
+                                variant="secondary"
+                                className="text-yellow-400 hover:text-yellow-300 border-yellow-500/30 hover:border-yellow-500/50"
+                              >
+                                🔮 Watch a Vision to draw again
+                              </Button>
+                            </div>
                           ) : (
                             <div className="text-center">
                               <p className="text-green-400 text-sm font-medium">
@@ -213,7 +245,7 @@ export default function RunesPage() {
               variant="outline" 
               className="border-yellow-500/30 text-yellow-300 hover:bg-yellow-500/10"
             >
-              Go to Codex
+              View Codex
             </Button>
           </Link>
           
@@ -239,6 +271,22 @@ export default function RunesPage() {
           </CardContent>
         </Card>
       </div>
+
+      {/* Ad Modal */}
+      <AdModal
+        isOpen={showAdModal}
+        onClose={() => setShowAdModal(false)}
+        onAdComplete={handleAdComplete}
+        ritualType="daily"
+      />
     </div>
+  );
+}
+
+export default function RunesPage() {
+  return (
+    <RequireAuth>
+      <RunesPageContent />
+    </RequireAuth>
   );
 }

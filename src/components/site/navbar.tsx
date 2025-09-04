@@ -4,13 +4,11 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useAuth } from '@/lib/auth/context';
 import { SignOut } from '@/components/auth/sign-out';
-import { AuthModal } from '@/components/auth/auth-modal';
 import { OrbHUD } from '@/components/orbs/orb-hud';
 import { ProgressHUD } from '@/components/progression/progress-hud';
 
 export function Navbar() {
   const [lang, setLang] = useState<'en' | 'ru'>('en');
-  const [showAuthModal, setShowAuthModal] = useState(false);
   const { user, loading } = useAuth();
 
   return (
@@ -53,12 +51,12 @@ export function Navbar() {
                   <SignOut />
                 </>
               ) : (
-                <button
-                  onClick={() => setShowAuthModal(true)}
+                <Link
+                  href="/auth"
                   className="inline-flex items-center rounded-2xl border border-yellow-500/40 bg-mystic/50 px-4 py-2 shadow-glow hover:scale-[1.02] transition text-sm"
                 >
                   Sign In
-                </button>
+                </Link>
               )}
             </>
           )}
@@ -88,13 +86,6 @@ export function Navbar() {
           </div>
         </div>
       </div>
-      
-      {/* Auth Modal */}
-      <AuthModal
-        isOpen={showAuthModal}
-        onClose={() => setShowAuthModal(false)}
-        defaultMode="signin"
-      />
     </header>
   );
 }
