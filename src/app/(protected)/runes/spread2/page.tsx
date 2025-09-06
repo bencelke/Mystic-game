@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { RequireAuth } from '@/components/auth';
 import { AdModal } from '@/components/ui/ad-modal';
 import { twoRuneSpreadAction, adRuneAction } from '../actions';
+import { getTodayRuneCountAction } from '../../stats/actions';
 import Link from 'next/link';
 
 interface SpreadRuneResult {
@@ -31,6 +32,18 @@ function Spread2PageContent() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showAdModal, setShowAdModal] = useState(false);
+  const [othersCounts, setOthersCounts] = useState<number[]>([]);
+
+  const fetchOthersCounts = async (runes: SpreadRuneResult[]) => {
+    try {
+      const counts = await Promise.all(
+        runes.map(rune => getTodayRuneCountAction(rune.id))
+      );
+      setOthersCounts(counts.map(c => c.count));
+    } catch (error) {
+      console.error('Error fetching others counts:', error);
+    }
+  };
 
   const handleCastSpread = async () => {
     setIsLoading(true);
@@ -40,7 +53,10 @@ function Spread2PageContent() {
       const response = await twoRuneSpreadAction();
       setResult(response);
       
-      if (!response.success) {
+      if (response.success && response.runes) {
+        // Fetch counts for all runes
+        await fetchOthersCounts(response.runes);
+      } else {
         setError(response.error || 'Failed to cast spread');
       }
     } catch (err) {
@@ -221,6 +237,15 @@ function Spread2PageContent() {
                                     {rune.reversed ? rune.reversedMeaning : rune.upright}
                                   </p>
                                 </div>
+
+                                {/* Seen today count */}
+                                {othersCounts[index] !== undefined && (
+                                  <div className="mt-3 text-center">
+                                    <p className="text-muted-foreground text-xs">
+                                      Seen today: <span className="text-yellow-400 font-semibold">{othersCounts[index]}</span>
+                                    </p>
+                                  </div>
+                                )}
                               </CardContent>
                             </Card>
                           </motion.div>

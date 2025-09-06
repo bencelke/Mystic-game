@@ -1,0 +1,94 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isOwner(uid) {
+      return request.auth != null && request.auth.uid == uid;
+    }
+    
+    function isAdmin() {
+      return request.auth != null && request.auth.token.admin == true;
+    }
+
+    // Users - owner can read/write, but cannot modify server-managed fields
+    match /users/{uid} {
+      allow read: if isOwner(uid) || isAdmin();
+      allow create: if isOwner(uid);
+      allow update: if isOwner(uid) && !(
+        // Block client from touching server-managed fields
+        request.resource.data.proEntitlement != resource.data.proEntitlement ||
+        request.resource.data.stripeCustomerId != resource.data.stripeCustomerId ||
+        request.resource.data.stripeSubscriptionId != resource.data.stripeSubscriptionId ||
+        request.resource.data.proPlan != resource.data.proPlan ||
+        request.resource.data.proSince != resource.data.proSince ||
+        request.resource.data.proCurrentPeriodEnd != resource.data.proCurrentPeriodEnd
+      );
+    }
+
+    // Orbs - owner and admin can read/write
+    match /orbs/{uid} {
+      allow read, create: if isOwner(uid) || isAdmin();
+      allow update: if isOwner(uid) || isAdmin();
+    }
+
+    // Codex - owner and admin can read/write
+    match /codex/{uid} {
+      allow read, create, update: if isOwner(uid) || isAdmin();
+    }
+
+    // Ritual logs - append-only, no updates/deletes
+    match /ritual_logs/{uid}/{logId} {
+      allow read: if isOwner(uid) || isAdmin();
+      allow create: if isOwner(uid) || isAdmin();
+      allow update, delete: if false;
+    }
+
+    // Vision sessions - owner and admin can read/write
+    match /vision_sessions/{sessionId} {
+      allow read, create, update: if isOwner(resource.data.userId) || isAdmin();
+    }
+
+    // Vision ledger - owner only
+    match /vision_ledger/{uid} {
+      allow read, create, update: if isOwner(uid) || isAdmin();
+      allow delete: if false;
+    }
+
+    // Rate limits - owner only
+    match /rate_limits/{uid}_{key} {
+      allow read, write: if isOwner(uid) || isAdmin();
+    }
+
+    // Idempotency keys - owner only
+    match /idempotency/{uid}/{key} {
+      allow read, write: if isOwner(uid) || isAdmin();
+    }
+
+    // Features config - read all, write admin only
+    match /features/config {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Global stats - read all, write admin only
+    match /global_stats/{dateKey} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Audit logs - admin only
+    match /audit_logs/{logId} {
+      allow read, write: if isAdmin();
+    }
+
+    // Analytics - admin only
+    match /analytics/{docId} {
+      allow read, write: if isAdmin();
+    }
+
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

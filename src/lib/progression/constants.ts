@@ -10,6 +10,7 @@ export const RITUAL_XP = {
   rune_spread3: 24,
   numerology_basic: 10,
   numerology_deep: 18,
+  wheel: 5,
 } as const;
 
 // Pro subscription XP multiplier

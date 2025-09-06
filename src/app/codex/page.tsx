@@ -23,25 +23,33 @@ function getRuneName(runeId: string): string {
 export default function CodexPage() {
   const { user, loading } = useAuth();
   const [collectedRunes, setCollectedRunes] = useState<string[]>([]);
+  const [collectedNumbers, setCollectedNumbers] = useState<number[]>([]);
   const [runesLoading, setRunesLoading] = useState(true);
+  const [numbersLoading, setNumbersLoading] = useState(true);
 
   useEffect(() => {
     if (user) {
       // For now, we'll use mock data since Firebase admin is not fully implemented
       // In production, this would fetch from the actual database
-      const fetchCollectedRunes = async () => {
+      const fetchCollectedData = async () => {
         try {
           // Mock some collected runes for demonstration
           const mockCollectedRunes = ['fehu', 'uruz', 'thurisaz'];
           setCollectedRunes(mockCollectedRunes);
-        } catch (error) {
-          console.error('Error fetching collected runes:', error);
-        } finally {
           setRunesLoading(false);
+
+          // Mock some collected numerology numbers for demonstration
+          const mockCollectedNumbers = [1, 3, 7, 11];
+          setCollectedNumbers(mockCollectedNumbers);
+          setNumbersLoading(false);
+        } catch (error) {
+          console.error('Error fetching collected data:', error);
+          setRunesLoading(false);
+          setNumbersLoading(false);
         }
       };
 
-      fetchCollectedRunes();
+      fetchCollectedData();
     }
   }, [user]);
 
@@ -213,6 +221,64 @@ export default function CodexPage() {
             <div className="mt-4 text-center">
               <p className="text-sm text-muted-foreground">
                 {collectedRunes.length} of 24 runes collected
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Numerology Numbers Collection */}
+        <Card className="border-border bg-card">
+          <CardHeader>
+            <CardTitle className="text-primary">Numerology Numbers</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {numbersLoading ? (
+              <div className="text-center py-8">
+                <div className="text-muted-foreground">Loading numerology collection...</div>
+              </div>
+            ) : (
+              <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9 gap-3">
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 22].map((number) => {
+                  const isCollected = collectedNumbers.includes(number);
+                  const isMasterNumber = number === 11 || number === 22;
+                  
+                  return (
+                    <div
+                      key={number}
+                      className={`aspect-square rounded-lg border-2 transition-all duration-300 ${
+                        isCollected
+                          ? 'border-yellow-500/50 bg-gradient-to-br from-purple-600/20 to-blue-600/20'
+                          : 'border-border/30 bg-card/30 opacity-50'
+                      }`}
+                    >
+                      <div className="flex flex-col items-center justify-center h-full p-2 text-center">
+                        {isCollected ? (
+                          <>
+                            <div 
+                              className="text-2xl mb-1 font-bold text-yellow-400"
+                              style={{ fontFamily: 'var(--font-cinzel)' }}
+                            >
+                              {number}
+                            </div>
+                            <div className="text-xs text-foreground font-medium">
+                              {isMasterNumber ? 'Master' : 'Number'}
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <div className="text-2xl mb-1 text-muted-foreground">?</div>
+                            <div className="text-xs text-muted-foreground">Locked</div>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+            <div className="mt-4 text-center">
+              <p className="text-sm text-muted-foreground">
+                {collectedNumbers.length} of 11 numbers unlocked
               </p>
             </div>
           </CardContent>

@@ -6,14 +6,25 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { DevOrbControls } from '@/components/orbs/dev-orb-controls';
-import { AdModal } from '@/components/ui/ad-modal';
+import { VisionModal } from '@/components/ui/vision-modal';
+import { OnlineChip } from '@/components/presence/OnlineChip';
 import { dailyCheckInAction } from '@/app/(protected)/progression/actions';
-import { adRuneAction } from '@/app/(protected)/runes/actions';
+import { useVision } from '@/lib/vision/use-vision';
+import { useAuth } from '@/lib/auth/context';
 
 export default function ArcadePage() {
   const hasCheckedIn = useRef(false);
-  const [showAdModal, setShowAdModal] = useState(false);
-  const [selectedRitual, setSelectedRitual] = useState<'daily' | 'spread2' | 'spread3' | null>(null);
+  const { user } = useAuth();
+  const { 
+    isModalOpen, 
+    currentPlacement,
+    currentReward,
+    eligibility, 
+    isLoading, 
+    openVision, 
+    closeVision, 
+    handleVisionComplete 
+  } = useVision();
 
   // Mock user data - in production, this would come from auth context
   const mockUser = {
@@ -41,44 +52,15 @@ export default function ArcadePage() {
     }
   }, []);
 
-  const handleAdComplete = async () => {
-    if (!selectedRitual) return;
-    
-    try {
-      const response = await adRuneAction(selectedRitual);
-      
-      if (response.success) {
-        // Navigate to the appropriate ritual page
-        switch (selectedRitual) {
-          case 'daily':
-            window.location.href = '/runes';
-            break;
-          case 'spread2':
-            window.location.href = '/runes/spread2';
-            break;
-          case 'spread3':
-            window.location.href = '/runes/spread3';
-            break;
-        }
-      } else {
-        console.error('Ad ritual failed:', response.error);
-        // Could show error toast here
-      }
-    } catch (error) {
-      console.error('Ad ritual error:', error);
-    }
-  };
-
-  const handleAdClick = (ritualType: 'daily' | 'spread2' | 'spread3') => {
-    setSelectedRitual(ritualType);
-    setShowAdModal(true);
+  const handleVisionClick = (placement: 'rune_daily' | 'rune_spread2' | 'rune_spread3' | 'numerology_compat') => {
+    openVision(placement, 'PASS');
   };
 
   return (
     <div className="min-h-screen bg-background p-4">
       <div className="mx-auto max-w-6xl space-y-8">
         {/* Header */}
-        <div className="text-center">
+        <div className="text-center relative">
           <h1 className="text-4xl md:text-5xl font-bold tracking-wide text-foreground">
             Welcome to the{' '}
             <span className="text-primary">Mystic Arcade</span>
@@ -87,6 +69,13 @@ export default function ArcadePage() {
             Choose your ritual: runes, tarot, numerology, or affirmations. 
             Each requires energy orbs to perform.
           </p>
+          
+          {/* Online presence banner */}
+          {user && (
+            <div className="absolute top-0 right-0">
+              <OnlineChip />
+            </div>
+          )}
         </div>
 
         {/* Dev Controls (Development Only) */}
@@ -112,7 +101,7 @@ export default function ArcadePage() {
               </p>
               {!mockUser.proEntitlement && (
                 <Button
-                  onClick={() => handleAdClick('daily')}
+                  onClick={() => handleVisionClick('rune_daily')}
                   variant="secondary"
                   size="sm"
                   className="text-yellow-400 hover:text-yellow-300 border-yellow-500/30 hover:border-yellow-500/50"
@@ -145,7 +134,7 @@ export default function ArcadePage() {
                 </Link>
               ) : (
                 <Button
-                  onClick={() => handleAdClick('spread2')}
+                  onClick={() => handleVisionClick('rune_spread2')}
                   variant="secondary"
                   size="sm"
                   className="text-yellow-400 hover:text-yellow-300 border-yellow-500/30 hover:border-yellow-500/50"
@@ -178,7 +167,7 @@ export default function ArcadePage() {
                 </Link>
               ) : (
                 <Button
-                  onClick={() => handleAdClick('spread3')}
+                  onClick={() => handleVisionClick('rune_spread3')}
                   variant="secondary"
                   size="sm"
                   className="text-yellow-400 hover:text-yellow-300 border-yellow-500/30 hover:border-yellow-500/50"
@@ -206,20 +195,87 @@ export default function ArcadePage() {
             </CardContent>
           </Card>
 
-          {/* Numerology */}
+          {/* Numerology Daily Number */}
           <Card className="hover:shadow-lg transition-shadow cursor-pointer border-border">
             <CardHeader className="text-center">
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
                 <span className="text-2xl">🔢</span>
               </div>
-              <CardTitle className="text-primary">Numerology</CardTitle>
-              <CardDescription>Sacred number meanings</CardDescription>
+              <CardTitle className="text-primary">Numerology Daily Number</CardTitle>
+              <CardDescription>Cosmic number guidance</CardDescription>
             </CardHeader>
             <CardContent className="text-center">
-              <Badge variant="secondary" className="mb-2">Cost: 1 Orb</Badge>
-              <p className="text-sm text-muted-foreground">
-                Calculate your life path number
+              <div className="space-y-2 mb-3">
+                <Badge variant="secondary" className="mb-2">Free (1/day)</Badge>
+                <Badge className="bg-yellow-400/10 text-yellow-400 border-yellow-500/30 text-xs">
+                  Pro: Deep Reading available
+                </Badge>
+              </div>
+              <p className="text-sm text-muted-foreground mb-3">
+                Discover your daily cosmic number
               </p>
+              <Link href="/numerology">
+                <Button size="sm" className="w-full">
+                  Calculate Number
+                </Button>
+              </Link>
+            </CardContent>
+          </Card>
+
+          {/* Numerology Compatibility */}
+          <Card className="hover:shadow-lg transition-shadow cursor-pointer border-border">
+            <CardHeader className="text-center">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
+                <span className="text-2xl">💕</span>
+              </div>
+              <CardTitle className="text-primary">Numerology Compatibility</CardTitle>
+              <CardDescription>Compare two paths</CardDescription>
+            </CardHeader>
+            <CardContent className="text-center">
+              <Badge variant="secondary" className="mb-2">
+                {mockUser.proEntitlement ? 'Free' : 'Cost: 1 Orb'}
+              </Badge>
+              <p className="text-sm text-muted-foreground mb-3">
+                Discover cosmic compatibility between two people
+              </p>
+              {mockUser.orbCount >= 1 || mockUser.proEntitlement ? (
+                <Link href="/numerology/compatibility">
+                  <Button size="sm" className="w-full">
+                    Read Compatibility
+                  </Button>
+                </Link>
+              ) : (
+                <Button
+                  onClick={() => handleVisionClick('numerology_compat')}
+                  variant="secondary"
+                  size="sm"
+                  className="text-yellow-400 hover:text-yellow-300 border-yellow-500/30 hover:border-yellow-500/50"
+                >
+                  🔮 Watch a Vision
+                </Button>
+              )}
+            </CardContent>
+          </Card>
+
+          {/* Mystic Wheel */}
+          <Card className="hover:shadow-lg transition-shadow cursor-pointer border-border">
+            <CardHeader className="text-center">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
+                <span className="text-2xl">🎡</span>
+              </div>
+              <CardTitle className="text-primary">Mystic Wheel</CardTitle>
+              <CardDescription>Daily booster spins</CardDescription>
+            </CardHeader>
+            <CardContent className="text-center">
+              <Badge variant="secondary" className="mb-2">Free spins daily</Badge>
+              <p className="text-sm text-muted-foreground mb-3">
+                Spin for orbs, XP, and special items
+              </p>
+              <Link href="/wheel">
+                <Button size="sm" className="w-full">
+                  Spin the Wheel
+                </Button>
+              </Link>
             </CardContent>
           </Card>
 
@@ -254,18 +310,15 @@ export default function ArcadePage() {
         </Card>
       </div>
 
-      {/* Ad Modal */}
-      {selectedRitual && (
-        <AdModal
-          isOpen={showAdModal}
-          onClose={() => {
-            setShowAdModal(false);
-            setSelectedRitual(null);
-          }}
-          onAdComplete={handleAdComplete}
-          ritualType={selectedRitual}
-        />
-      )}
+      {/* Vision Modal */}
+      <VisionModal
+        isOpen={isModalOpen}
+        onClose={closeVision}
+        onComplete={handleVisionComplete}
+        placement={currentPlacement || 'rune_daily'}
+        eligibility={eligibility || { enabled: false, reason: 'not-auth' }}
+        reward={currentReward}
+      />
     </div>
   );
 }

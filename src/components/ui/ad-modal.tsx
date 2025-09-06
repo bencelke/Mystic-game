@@ -9,7 +9,7 @@ interface AdModalProps {
   isOpen: boolean;
   onClose: () => void;
   onAdComplete: () => void;
-  ritualType: 'daily' | 'spread2' | 'spread3';
+  ritualType: 'daily' | 'spread2' | 'spread3' | 'compatibility';
 }
 
 export function AdModal({ isOpen, onClose, onAdComplete, ritualType }: AdModalProps) {

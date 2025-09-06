@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { RequireAuth } from '@/components/auth';
 import { AdModal } from '@/components/ui/ad-modal';
 import { dailyRuneAction, adRuneAction } from './actions';
+import { getTodayRuneCountAction } from '../stats/actions';
 import Link from 'next/link';
 
 interface RuneData {
@@ -32,6 +33,16 @@ function RunesPageContent() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [showAdModal, setShowAdModal] = useState(false);
+  const [othersCount, setOthersCount] = useState<number | null>(null);
+
+  const fetchOthersCount = async (runeId: string) => {
+    try {
+      const countResult = await getTodayRuneCountAction(runeId);
+      setOthersCount(countResult.count);
+    } catch (error) {
+      console.error('Error fetching others count:', error);
+    }
+  };
 
   useEffect(() => {
     // Get today's rune on mount
@@ -41,6 +52,10 @@ function RunesPageContent() {
         // If already claimed, show the rune immediately
         if (response.alreadyClaimed) {
           setIsFlipped(true);
+        }
+        // Fetch others count if we have a rune
+        if (response.rune) {
+          fetchOthersCount(response.rune.id);
         }
       } else {
         setError(response.error || 'Failed to get daily rune');
@@ -55,6 +70,10 @@ function RunesPageContent() {
   const handleCardClick = () => {
     if (!isFlipped && result && result.success && !result.alreadyClaimed) {
       setIsFlipped(true);
+      // Fetch others count when revealing
+      if (result.rune) {
+        fetchOthersCount(result.rune.id);
+      }
     }
   };
 
@@ -202,6 +221,15 @@ function RunesPageContent() {
                             <p className="text-yellow-400/80 mt-1 italic">{result.rune.reversed}</p>
                           </div>
                         </div>
+
+                        {/* Others drew this */}
+                        {othersCount !== null && (
+                          <div className="mt-4 text-center">
+                            <p className="text-muted-foreground text-sm">
+                              Others drew this rune today: <span className="text-yellow-400 font-semibold">{othersCount}</span>
+                            </p>
+                          </div>
+                        )}
 
                         {/* Status */}
                         <div className="mt-6 p-3 rounded-lg bg-card/50 border border-border">

@@ -6,6 +6,10 @@ import { addRitualXPAction } from '@/app/(protected)/progression/actions';
 import { spendOrbsAction } from '@/app/(protected)/orbs/actions';
 import { dailySeed, pickFrom, isReversed } from '@/lib/random/seed';
 import runesData from '@/content/runes.json';
+import { checkAndConsume, formatRateLimitError } from '@/lib/security/rate-limit';
+import { checkIdempotency, storeIdempotencyResult, generateIdempotencyKey } from '@/lib/security/idempotency';
+import { ritualInputSchema } from '@/lib/validation/inputs';
+import { incRuneCount } from '@/lib/stats/service';
 
 // Type for rune data
 interface RuneData {
@@ -103,6 +107,9 @@ export async function dailyRuneAction() {
 
     // Award XP
     await addRitualXPAction('rune_single');
+
+    // Increment rune count for stats
+    await incRuneCount(rune.id);
 
     return {
       success: true,
@@ -226,6 +233,11 @@ export async function twoRuneSpreadAction() {
     // Award XP
     await addRitualXPAction('rune_spread2');
 
+    // Increment rune counts for stats
+    for (const rune of runeResults) {
+      await incRuneCount(rune.id);
+    }
+
     return {
       success: true,
       runes: runeResults,
@@ -321,6 +333,11 @@ export async function threeRuneSpreadAction() {
     // Award XP
     await addRitualXPAction('rune_spread3');
 
+    // Increment rune counts for stats
+    for (const rune of runeResults) {
+      await incRuneCount(rune.id);
+    }
+
     return {
       success: true,
       runes: runeResults,
@@ -340,7 +357,7 @@ export async function threeRuneSpreadAction() {
  * Ad-based rune ritual action
  * Allows Free users to watch ads for extra ritual pulls
  */
-export async function adRuneAction(mode: 'daily' | 'spread2' | 'spread3') {
+export async function adRuneAction(mode: 'daily' | 'spread2' | 'spread3' | 'compatibility') {
   try {
     // For now, we'll use a mock user since auth is not fully implemented
     const uid = 'mock-user-id';
@@ -360,6 +377,11 @@ export async function adRuneAction(mode: 'daily' | 'spread2' | 'spread3') {
           return await twoRuneSpreadAction();
         case 'spread3':
           return await threeRuneSpreadAction();
+        case 'compatibility':
+          // For compatibility, we need to import the action
+          const { compatibilityAction } = await import('../numerology/actions');
+          // This would need partner input, so we'll return a placeholder for now
+          return { success: false, error: 'Compatibility ritual requires partner input' };
         default:
           return { success: false, error: 'Invalid ritual mode' };
       }
@@ -416,6 +438,10 @@ export async function adRuneAction(mode: 'daily' | 'spread2' | 'spread3') {
         break;
       case 'spread3':
         ritualResult = await threeRuneSpreadAction();
+        break;
+      case 'compatibility':
+        // For compatibility, we need partner input, so we'll return a placeholder for now
+        ritualResult = { success: false, error: 'Compatibility ritual requires partner input' };
         break;
       default:
         return { success: false, error: 'Invalid ritual mode' };

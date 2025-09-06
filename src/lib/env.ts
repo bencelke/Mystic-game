@@ -12,6 +12,16 @@ const firebaseEnvSchema = z.object({
   NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID: z.string().min(1, 'Firebase Measurement ID is required'),
 });
 
+// Stripe environment variables schema
+const stripeEnvSchema = z.object({
+  NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string().min(1, 'Stripe Publishable Key is required'),
+  STRIPE_SECRET_KEY: z.string().min(1, 'Stripe Secret Key is required'),
+  STRIPE_WEBHOOK_SECRET: z.string().min(1, 'Stripe Webhook Secret is required'),
+  STRIPE_PRICE_PRO_MONTHLY: z.string().min(1, 'Stripe Monthly Price ID is required'),
+  STRIPE_PRICE_PRO_YEARLY: z.string().min(1, 'Stripe Yearly Price ID is required'),
+  APP_BASE_URL: z.string().url('App Base URL must be valid').default('http://localhost:3000'),
+});
+
 // Validate environment variables
 function validateEnv() {
   try {
@@ -23,6 +33,23 @@ function validateEnv() {
         `Missing or invalid Firebase environment variables: ${missingVars}\n` +
         'Please check your .env.local file and ensure all NEXT_PUBLIC_FIREBASE_* variables are set.'
       );
+    }
+    throw error;
+  }
+}
+
+// Validate Stripe environment variables (optional for billing features)
+function validateStripeEnv() {
+  try {
+    return stripeEnvSchema.parse(process.env);
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      const missingVars = error.issues.map((err: z.ZodIssue) => err.path.join('.')).join(', ');
+      console.warn(
+        `Missing Stripe environment variables: ${missingVars}\n` +
+        'Billing features will be disabled. Please check your .env.local file.'
+      );
+      return null;
     }
     throw error;
   }
@@ -42,5 +69,18 @@ export const env = typeof window === 'undefined'
       NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID || '',
     };
 
+// Export Stripe environment variables (optional)
+export const stripeEnv = typeof window === 'undefined' 
+  ? validateStripeEnv() 
+  : {
+      NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '',
+      STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY || '',
+      STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET || '',
+      STRIPE_PRICE_PRO_MONTHLY: process.env.STRIPE_PRICE_PRO_MONTHLY || '',
+      STRIPE_PRICE_PRO_YEARLY: process.env.STRIPE_PRICE_PRO_YEARLY || '',
+      APP_BASE_URL: process.env.APP_BASE_URL || 'http://localhost:3000',
+    };
+
 // Type-safe environment variables
 export type FirebaseEnv = z.infer<typeof firebaseEnvSchema>;
+export type StripeEnv = z.infer<typeof stripeEnvSchema>;

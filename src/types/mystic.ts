@@ -17,6 +17,12 @@ export interface UserDoc {
   lastLoginAt?: TimestampLike; // Last login timestamp for streak calculation
   lastWatchAt?: TimestampLike; // Last rewarded ad watch timestamp
   createdAt?: TimestampLike; // Account creation timestamp
+  // Stripe billing fields
+  stripeCustomerId?: string; // Stripe customer ID
+  stripeSubscriptionId?: string; // Stripe subscription ID
+  proSince?: TimestampLike; // When Pro subscription started
+  proPlan?: 'monthly' | 'yearly'; // Pro subscription plan
+  proCurrentPeriodEnd?: TimestampLike; // When current period ends
 }
 
 // Orbs System Document
@@ -31,19 +37,49 @@ export interface OrbsDoc {
 export interface CodexDoc {
   runes: string[]; // Array of rune IDs
   tarot: string[]; // Array of tarot card IDs
+  numerology: number[]; // Array of numerology numbers (1-9, 11, 22)
   sigils?: string[]; // Array of sigil IDs (optional)
+}
+
+// Wheel Ledger Document
+export interface WheelLedgerDoc {
+  dateKey: string; // UTC date key (YYYY-MM-DD)
+  spinsToday: number; // Number of spins used today
+  lastSpinAt?: TimestampLike; // Last spin timestamp
+}
+
+// Inventory Document
+export interface InventoryDoc {
+  streakFreeze: number; // Count of Streak Freeze items
 }
 
 // Ritual Performance Log
 export interface RitualLog {
-  type: "rune" | "tarot" | "numerology"; // Type of ritual performed
-  mode: "daily" | "single" | "spread" | "deep"; // Ritual mode
+  type: "rune" | "tarot" | "numerology" | "wheel"; // Type of ritual performed
+  mode: "daily" | "single" | "spread" | "deep" | "compatibility" | "vision"; // Ritual mode
   cards?: Array<{
     id: string; // Card ID
     reversed?: boolean; // Whether card is reversed
     position?: "past" | "present" | "future"; // Position in spread
   }>; // Array of cards (for tarot rituals)
   runeId?: string; // Rune ID (for rune rituals)
+  number?: number; // Numerology number (for numerology rituals)
+  deepContent?: string; // Deep interpretation content (for deep numerology)
+  inputs?: { // Compatibility ritual inputs
+    you: { name: string; dob: string };
+    partner: { name: string; dob: string };
+  };
+  results?: { // Compatibility ritual results
+    lpA: number; // Your life path
+    lpB: number; // Partner life path
+    nnA: number; // Your name number
+    nnB: number; // Partner name number
+    score: number; // Compatibility score (0-100)
+  };
+  wheelResult?: { // Wheel ritual result
+    kind: "ORB" | "XP" | "STREAK_FREEZE"; // Type of reward
+    value: number; // Amount of reward
+  };
   costOrbs: number; // Orbs spent on ritual
   xpAwarded: number; // Experience points gained
   seed?: string; // Random seed for ritual generation
@@ -54,10 +90,17 @@ export interface RitualLog {
 export interface FeaturesConfig {
   watchToEarnEnabled: boolean; // Whether watch-to-earn is active
   watchCooldownMin: number; // Cooldown in minutes between rewarded ads
+  watchDailyLimit: number; // Maximum visions per day per user
   dailyRitualEnabled: boolean; // Whether daily rituals are available
   proFeaturesEnabled: boolean; // Whether pro features are unlocked
   socialFeaturesEnabled: boolean; // Whether social features are active
   offlineModeEnabled: boolean; // Whether offline play is allowed
+  // Wheel settings
+  wheelDailyFree: number; // Free spins per day for free users
+  wheelDailyFreePro: number; // Free spins per day for pro users
+  wheelAllowVisionExtra: boolean; // Whether extra spins via Vision are allowed
+  wheelDailyMax: number; // Maximum spins per day (inclusive of free spins)
+  wheelVisionPlacement: string; // Vision placement key for wheel
 }
 
 // Game State Document
