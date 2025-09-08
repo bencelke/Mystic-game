@@ -54,7 +54,7 @@ export async function checkAndConsume(
     const windowStart = now - config.windowMs;
     
     // Use transaction to ensure atomicity
-    const result = await adminDb.runTransaction(async (transaction) => {
+    const result = await adminDb.runTransaction(async (transaction: any) => {
       const doc = await transaction.get(docRef);
       
       let currentTokens: number;

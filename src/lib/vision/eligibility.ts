@@ -3,8 +3,8 @@
  * Handles cooldowns, daily limits, and Pro user checks
  */
 
-import { VisionEligibility, VisionPlacement, FeaturesConfig } from '@/types/vision';
-import { UserDoc } from '@/types/mystic';
+import { VisionEligibility, VisionPlacement } from '@/types/vision';
+import { UserDoc, FeaturesConfig } from '@/types/mystic';
 
 export interface VisionEligibilityCheck {
   userId: string;
@@ -98,7 +98,13 @@ export function getDefaultVisionConfig(): FeaturesConfig {
     dailyRitualEnabled: true,
     proFeaturesEnabled: true,
     socialFeaturesEnabled: false,
-    offlineModeEnabled: false
+    offlineModeEnabled: false,
+    inlineWheelEnabled: false,
+    wheelDailyFree: 1,
+    wheelDailyFreePro: 2,
+    wheelAllowVisionExtra: true,
+    wheelDailyMax: 5,
+    wheelVisionPlacement: 'wheel'
   };
 }
 
@@ -124,7 +130,8 @@ export function getPlacementDisplayName(placement: VisionPlacement): string {
     rune_spread2: 'Two-Rune Spread',
     rune_spread3: 'Three-Rune Spread',
     numerology_daily: 'Daily Numerology',
-    numerology_compat: 'Numerology Compatibility'
+    numerology_compat: 'Numerology Compatibility',
+    wheel: 'Wheel Spin'
   };
   
   return names[placement] || 'Ritual';

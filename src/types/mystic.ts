@@ -95,6 +95,7 @@ export interface FeaturesConfig {
   proFeaturesEnabled: boolean; // Whether pro features are unlocked
   socialFeaturesEnabled: boolean; // Whether social features are active
   offlineModeEnabled: boolean; // Whether offline play is allowed
+  inlineWheelEnabled: boolean; // Whether inline wheel widget is enabled in rituals
   // Wheel settings
   wheelDailyFree: number; // Free spins per day for free users
   wheelDailyFreePro: number; // Free spins per day for pro users

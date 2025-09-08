@@ -109,7 +109,7 @@ export async function cleanupExpiredIdempotencyKeys(): Promise<number> {
     const batch = adminDb.batch();
     let count = 0;
     
-    snapshot.docs.forEach((doc) => {
+    snapshot.docs.forEach((doc: any) => {
       batch.delete(doc.ref);
       count++;
     });

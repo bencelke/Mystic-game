@@ -2,9 +2,16 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
+import { useReducedMotion } from '@/lib/hooks/useReducedMotion';
 
 export function MotionProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const prefersReducedMotion = useReducedMotion();
+
+  if (prefersReducedMotion) {
+    return <>{children}</>;
+  }
+
   return (
     <AnimatePresence mode="wait">
       <motion.div

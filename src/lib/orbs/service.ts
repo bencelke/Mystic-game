@@ -220,7 +220,7 @@ export const spend = async (uid: string, n: number = 1): Promise<OrbsDoc> => {
     
     if (isAdminAvailable()) {
       // Use Admin SDK with transaction
-      const result = await adminDb.runTransaction(async (transaction) => {
+      const result = await adminDb.runTransaction(async (transaction: any) => {
         const orbsRef = adminDb.doc(orbsDoc(uid));
         const orbsSnap = await transaction.get(orbsRef);
         

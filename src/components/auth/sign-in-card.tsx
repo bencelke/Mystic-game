@@ -6,13 +6,21 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
 
-export function SignInCard() {
+interface SignInCardProps {
+  onSuccess?: () => void;
+}
+
+export function SignInCard({ onSuccess }: SignInCardProps = {}) {
   const [mode, setMode] = useState<'signin' | 'signup'>('signin');
   const [error, setError] = useState<string | null>(null);
 
   const handleSuccess = () => {
-    // Redirect to arcade after successful auth
-    window.location.href = '/arcade';
+    if (onSuccess) {
+      onSuccess();
+    } else {
+      // Default behavior: redirect to arcade after successful auth
+      window.location.href = '/arcade';
+    }
   };
 
   const handleError = (error: string) => {

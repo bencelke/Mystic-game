@@ -87,12 +87,12 @@ function WheelPageContent() {
         setResult({
           segment: response.segment,
           summary: response.summary,
-          remaining: response.remaining
+          remaining: response.remaining || 0
         });
         setLastSpinResult({
           segment: response.segment,
           summary: response.summary,
-          remaining: response.remaining
+          remaining: response.remaining || 0
         });
         
         // Update status
@@ -127,12 +127,12 @@ function WheelPageContent() {
           setResult({
             segment: response.segment,
             summary: response.summary,
-            remaining: response.remaining
+            remaining: response.remaining || 0
           });
           setLastSpinResult({
             segment: response.segment,
             summary: response.summary,
-            remaining: response.remaining
+            remaining: response.remaining || 0
           });
           
           // Update status

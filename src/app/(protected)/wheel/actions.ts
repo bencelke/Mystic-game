@@ -70,7 +70,7 @@ export async function spinDailyWheelAction(): Promise<{
     } catch (rateLimitError) {
       return {
         success: false,
-        error: formatRateLimitError(rateLimitError as Error)
+        error: 'Rate limit exceeded. Please try again later.'
       };
     }
     
@@ -127,7 +127,7 @@ export async function spinVisionWheelAction(): Promise<{
     } catch (rateLimitError) {
       return {
         success: false,
-        error: formatRateLimitError(rateLimitError as Error)
+        error: 'Rate limit exceeded. Please try again later.'
       };
     }
     

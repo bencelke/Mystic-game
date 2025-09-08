@@ -60,7 +60,7 @@ export async function getUsersAction({
       // For now, we'll get all users and filter client-side
       // In production, you might want to use Algolia or similar for better search
       const allUsersSnapshot = await adminDb.collection('users').get();
-      const allUsers = allUsersSnapshot.docs.map(doc => ({
+      const allUsers = allUsersSnapshot.docs.map((doc: any) => ({
         uid: doc.id,
         ...doc.data()
       })) as UserSummary[];
@@ -91,7 +91,7 @@ export async function getUsersAction({
       .limit(validatedPagination.limit)
       .get();
     
-    const users: UserSummary[] = usersSnapshot.docs.map(doc => ({
+    const users: UserSummary[] = usersSnapshot.docs.map((doc: any) => ({
       uid: doc.id,
       ...doc.data()
     })) as UserSummary[];

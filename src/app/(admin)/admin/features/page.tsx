@@ -185,6 +185,22 @@ export default async function FeaturesConfigPage() {
                     defaultChecked={config.offlineModeEnabled}
                   />
                 </div>
+
+                <div className="flex items-center justify-between">
+                  <div className="space-y-0.5">
+                    <Label htmlFor="inlineWheelEnabled" className="text-foreground">
+                      Inline Wheel Widget
+                    </Label>
+                    <p className="text-sm text-muted-foreground">
+                      Show wheel widget in ritual panels
+                    </p>
+                  </div>
+                  <Switch
+                    id="inlineWheelEnabled"
+                    name="inlineWheelEnabled"
+                    defaultChecked={config.inlineWheelEnabled}
+                  />
+                </div>
               </div>
             </div>
 

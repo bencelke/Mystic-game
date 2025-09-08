@@ -30,6 +30,7 @@ export async function getFeaturesConfigAction(): Promise<FeaturesConfigResult> {
         proFeaturesEnabled: true,
         socialFeaturesEnabled: false,
         offlineModeEnabled: false,
+        inlineWheelEnabled: false,
         proXpMultiplier: 2,
         wheelDailyFree: 1,
         wheelDailyFreePro: 2,
@@ -62,7 +63,7 @@ export async function getFeaturesConfigAction(): Promise<FeaturesConfigResult> {
 /**
  * Update features configuration
  */
-export async function updateFeaturesConfigAction(formData: FormData): Promise<FeaturesConfigResult> {
+export async function updateFeaturesConfigAction(formData: FormData): Promise<void> {
   try {
     // Mock user for now - in production this would come from auth
     const uid = 'mock-admin-user';
@@ -70,10 +71,7 @@ export async function updateFeaturesConfigAction(formData: FormData): Promise<Fe
     // Rate limiting
     const rateLimitResult = await checkAndConsume(uid, 'admin:features');
     if (!rateLimitResult.allowed) {
-      return {
-        success: false,
-        error: 'Too many requests. Please wait a moment.'
-      };
+      throw new Error('Too many requests. Please wait a moment.');
     }
     
     // Parse form data
@@ -85,7 +83,13 @@ export async function updateFeaturesConfigAction(formData: FormData): Promise<Fe
       proFeaturesEnabled: formData.get('proFeaturesEnabled') === 'on',
       socialFeaturesEnabled: formData.get('socialFeaturesEnabled') === 'on',
       offlineModeEnabled: formData.get('offlineModeEnabled') === 'on',
-      proXpMultiplier: parseFloat(formData.get('proXpMultiplier') as string) || 2
+      inlineWheelEnabled: formData.get('inlineWheelEnabled') === 'on',
+      proXpMultiplier: parseFloat(formData.get('proXpMultiplier') as string) || 2,
+      wheelDailyFree: parseInt(formData.get('wheelDailyFree') as string) || 1,
+      wheelDailyFreePro: parseInt(formData.get('wheelDailyFreePro') as string) || 2,
+      wheelAllowVisionExtra: formData.get('wheelAllowVisionExtra') === 'on',
+      wheelDailyMax: parseInt(formData.get('wheelDailyMax') as string) || 5,
+      wheelVisionPlacement: formData.get('wheelVisionPlacement') as string || 'wheel'
     };
     
     // Validate input
@@ -121,24 +125,8 @@ export async function updateFeaturesConfigAction(formData: FormData): Promise<Fe
       });
     }
     
-    return {
-      success: true,
-      config: validatedConfig
-    };
-    
   } catch (error) {
     console.error('Error updating features config:', error);
-    
-    if (error instanceof Error && error.name === 'ZodError') {
-      return {
-        success: false,
-        error: 'Invalid configuration values. Please check your input.'
-      };
-    }
-    
-    return {
-      success: false,
-      error: 'Failed to update configuration'
-    };
+    throw error; // Re-throw to let Next.js handle the error
   }
 }

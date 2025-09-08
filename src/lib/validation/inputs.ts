@@ -65,6 +65,7 @@ export const featuresConfigSchema = z.object({
   proFeaturesEnabled: z.boolean(),
   socialFeaturesEnabled: z.boolean(),
   offlineModeEnabled: z.boolean(),
+  inlineWheelEnabled: z.boolean(),
   proXpMultiplier: z.number().min(1).max(10), // 1x to 10x multiplier
   // Wheel settings
   wheelDailyFree: z.number().min(0).max(10), // 0 to 10 free spins

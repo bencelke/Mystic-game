@@ -13,7 +13,8 @@ export async function POST(request: Request) {
     const body = await request.text();
     
     // Get signature from headers
-    const sig = headers().get('stripe-signature');
+    const headersList = await headers();
+    const sig = headersList.get('stripe-signature');
     
     if (!sig) {
       console.error('Missing stripe-signature header');
@@ -77,7 +78,7 @@ export async function POST(request: Request) {
           proEntitlement: true,
           proSince: FieldValue.serverTimestamp(),
           proPlan: derivedPlan,
-          proCurrentPeriodEnd: new Date(subscription.current_period_end * 1000)
+          proCurrentPeriodEnd: new Date((subscription as any).current_period_end * 1000)
         });
         
         console.log(`Updated user ${uid} with Pro subscription (${derivedPlan})`);
@@ -118,7 +119,7 @@ export async function POST(request: Request) {
         // Update user document
         const updateData: any = {
           proEntitlement: isActive,
-          proCurrentPeriodEnd: new Date(subscription.current_period_end * 1000)
+          proCurrentPeriodEnd: new Date((subscription as any).current_period_end * 1000)
         };
         
         if (derivedPlan) {

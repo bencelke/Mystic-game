@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   title: 'Mystic — Parapsychology Arcade',
   description: 'Spin, draw, cast. Free rituals with XP, orbs, and collections.',
   manifest: '/manifest.json',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    viewportFit: 'cover',
+  },
 };
 
 export default function RootLayout({
@@ -24,7 +29,11 @@ export default function RootLayout({
         <MotionProvider>
           <AuthProvider>
             <Navbar />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1">
+              <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8">
+                {children}
+              </div>
+            </main>
             <Footer />
           </AuthProvider>
         </MotionProvider>

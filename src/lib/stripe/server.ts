@@ -10,7 +10,7 @@ if (!stripeEnv?.STRIPE_SECRET_KEY) {
 
 // Initialize Stripe with the secret key
 export const stripe = new Stripe(stripeEnv.STRIPE_SECRET_KEY, {
-  apiVersion: '2024-06-20',
+  apiVersion: '2025-08-27.basil',
 });
 
 // Utility function to create absolute URLs

@@ -97,7 +97,7 @@ export default function CodexPage() {
             <CardTitle className="text-primary">Progression</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 gap-4">
               <div className="text-center">
                 <div className="text-2xl font-bold text-foreground">{user.level}</div>
                 <div className="text-sm text-muted-foreground">Level</div>
@@ -135,7 +135,7 @@ export default function CodexPage() {
           </CardHeader>
           <CardContent>
             {user.achievements && user.achievements.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {user.achievements.map((achievement: string) => (
                   <div key={achievement} className="flex items-center gap-3 p-3 rounded-lg border border-border bg-card">
                     <div className="w-8 h-8 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full flex items-center justify-center">
@@ -174,7 +174,7 @@ export default function CodexPage() {
                 <div className="text-muted-foreground">Loading rune collection...</div>
               </div>
             ) : (
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 sm:gap-3">
                 {Array.from({ length: 24 }, (_, index) => {
                   const runeId = [
                     'fehu', 'uruz', 'thurisaz', 'ansuz', 'raidho', 'kenaz',
@@ -237,7 +237,7 @@ export default function CodexPage() {
                 <div className="text-muted-foreground">Loading numerology collection...</div>
               </div>
             ) : (
-              <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9 gap-3">
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-2 sm:gap-3">
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 22].map((number) => {
                   const isCollected = collectedNumbers.includes(number);
                   const isMasterNumber = number === 11 || number === 22;

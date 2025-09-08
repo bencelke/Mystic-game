@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { X, Clock, Zap, Star } from 'lucide-react';
@@ -123,7 +123,7 @@ export function VisionModal({
           exit={{ scale: 0.9, opacity: 0 }}
           transition={{ type: "spring", duration: 0.5 }}
           onClick={(e) => e.stopPropagation()}
-          className="w-full max-w-md"
+          className="w-full max-w-md mx-4"
         >
           <Card className="border-yellow-500/50 bg-gradient-to-br from-purple-900/90 to-black/90 shadow-2xl shadow-yellow-500/20">
             <CardHeader className="text-center pb-4">
@@ -132,16 +132,16 @@ export function VisionModal({
                   variant="ghost"
                   size="sm"
                   onClick={onClose}
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-muted-foreground hover:text-foreground min-h-[44px] min-w-[44px]"
                 >
                   <X className="h-4 w-4" />
                 </Button>
               </div>
-              <div className="text-6xl mb-4">🔮</div>
-              <CardTitle className="text-2xl text-yellow-400 font-cinzel">
+              <div className="text-4xl sm:text-6xl mb-4">🔮</div>
+              <CardTitle className="text-xl sm:text-2xl text-yellow-400 font-cinzel">
                 Watch a Vision
               </CardTitle>
-              <CardDescription className="text-muted-foreground">
+              <CardDescription className="text-sm sm:text-base text-muted-foreground">
                 {getPlacementDisplayName(placement)} - {getRewardText()}
               </CardDescription>
             </CardHeader>
@@ -188,7 +188,7 @@ export function VisionModal({
                     </>
                   )}
                   
-                  <Button onClick={onClose} variant="outline" className="w-full">
+                  <Button onClick={onClose} variant="outline" className="w-full min-h-[44px]">
                     Close
                   </Button>
                 </div>
@@ -218,7 +218,7 @@ export function VisionModal({
                       
                       <Button
                         onClick={handleStartVision}
-                        className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-300 hover:to-yellow-400 text-black font-semibold"
+                        className="w-full min-h-[44px] bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-300 hover:to-yellow-400 text-black font-semibold"
                       >
                         🔮 Watch Vision
                       </Button>

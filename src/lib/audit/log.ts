@@ -72,7 +72,7 @@ export async function getAuditLogs(
     const snapshot = await query.get();
     const totalSnapshot = await adminDb.collection('audit_logs').count().get();
     
-    const logs: AuditLogEntry[] = snapshot.docs.map(doc => ({
+    const logs: AuditLogEntry[] = snapshot.docs.map((doc: any) => ({
       id: doc.id,
       ...doc.data(),
       createdAt: doc.data().createdAt?.toDate?.() || new Date()
@@ -112,7 +112,7 @@ export async function getAuditLogsForUser(
       .count()
       .get();
     
-    const logs: AuditLogEntry[] = snapshot.docs.map(doc => ({
+    const logs: AuditLogEntry[] = snapshot.docs.map((doc: any) => ({
       id: doc.id,
       ...doc.data(),
       createdAt: doc.data().createdAt?.toDate?.() || new Date()
@@ -152,7 +152,7 @@ export async function getAuditLogsForAction(
       .count()
       .get();
     
-    const logs: AuditLogEntry[] = snapshot.docs.map(doc => ({
+    const logs: AuditLogEntry[] = snapshot.docs.map((doc: any) => ({
       id: doc.id,
       ...doc.data(),
       createdAt: doc.data().createdAt?.toDate?.() || new Date()
@@ -187,7 +187,7 @@ export async function searchAuditLogs(
     
     const snapshot = await query.get();
     
-    const allLogs: AuditLogEntry[] = snapshot.docs.map(doc => ({
+    const allLogs: AuditLogEntry[] = snapshot.docs.map((doc: any) => ({
       id: doc.id,
       ...doc.data(),
       createdAt: doc.data().createdAt?.toDate?.() || new Date()
@@ -234,7 +234,7 @@ export async function cleanupOldAuditLogs(daysToKeep: number = 90): Promise<numb
     const batch = adminDb.batch();
     let count = 0;
     
-    snapshot.docs.forEach((doc) => {
+    snapshot.docs.forEach((doc: any) => {
       batch.delete(doc.ref);
       count++;
     });
@@ -278,13 +278,13 @@ export async function getAuditStats(): Promise<{
       .limit(1000)
       .get();
     
-    const recentLogs = recentSnapshot.docs.map(doc => doc.data());
+    const recentLogs = recentSnapshot.docs.map((doc: any) => doc.data());
     
     // Count actions
     const actionCounts: Record<string, number> = {};
     const userCounts: Record<string, number> = {};
     
-    recentLogs.forEach(log => {
+    recentLogs.forEach((log: any) => {
       actionCounts[log.action] = (actionCounts[log.action] || 0) + 1;
       userCounts[log.actorUid] = (userCounts[log.actorUid] || 0) + 1;
     });
