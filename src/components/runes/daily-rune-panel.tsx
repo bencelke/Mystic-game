@@ -11,6 +11,9 @@ import { useAuthGate } from '@/lib/auth/useAuthGate';
 import { AuthGateDialog } from '@/components/auth/auth-gate-dialog';
 import { WheelInline } from '@/components/wheel/wheel-inline';
 import { useReducedMotion } from '@/lib/hooks/useReducedMotion';
+import { RuneInfoButton } from './RuneInfo';
+import { RuneDetailDrawer } from './RuneDetailDrawer';
+import { RuneId } from '@/content/runes-ids';
 import Link from 'next/link';
 
 interface RuneData {
@@ -37,6 +40,8 @@ export function DailyRunePanel() {
   const [error, setError] = useState<string | null>(null);
   const [showAdModal, setShowAdModal] = useState(false);
   const [othersCount, setOthersCount] = useState<number | null>(null);
+  const [selectedRuneId, setSelectedRuneId] = useState<RuneId | null>(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const { ensureAuthed, isOpen, onOpenChange, onAuthenticated } = useAuthGate();
   const prefersReducedMotion = useReducedMotion();
 
@@ -184,9 +189,19 @@ export function DailyRunePanel() {
                       </div>
                       
                       {/* Rune Name */}
-                      <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-4">
-                        {result.rune.name}
-                      </h3>
+                      <div className="flex items-center justify-center gap-2 mb-4">
+                        <h3 className="text-xl sm:text-2xl font-bold text-foreground">
+                          {result.rune.name}
+                        </h3>
+                        <RuneInfoButton 
+                          runeId={result.rune.id as any} 
+                          size="sm"
+                          onClick={() => {
+                            setSelectedRuneId(result.rune.id as RuneId);
+                            setIsDrawerOpen(true);
+                          }}
+                        />
+                      </div>
                       
                       {/* Meaning */}
                       <div className="space-y-2 text-xs sm:text-sm">
@@ -263,9 +278,12 @@ export function DailyRunePanel() {
                         </div>
                         
                         {/* Rune Name */}
-                        <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-4">
-                          {result.rune.name}
-                        </h3>
+                        <div className="flex items-center justify-center gap-2 mb-4">
+                          <h3 className="text-xl sm:text-2xl font-bold text-foreground">
+                            {result.rune.name}
+                          </h3>
+                          <RuneInfoButton runeId={result.rune.id as any} size="sm" />
+                        </div>
                         
                         {/* Meaning */}
                         <div className="space-y-2 text-xs sm:text-sm">
@@ -373,6 +391,16 @@ export function DailyRunePanel() {
         isOpen={isOpen}
         onOpenChange={onOpenChange}
         onAuthenticated={onAuthenticated}
+      />
+
+      {/* Rune Detail Drawer */}
+      <RuneDetailDrawer
+        runeId={selectedRuneId}
+        isOpen={isDrawerOpen}
+        onClose={() => {
+          setIsDrawerOpen(false);
+          setSelectedRuneId(null);
+        }}
       />
     </div>
   );

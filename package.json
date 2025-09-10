@@ -14,7 +14,8 @@
     "prepare": "lefthook install",
     "pre-commit": "pnpm lint && pnpm typecheck && pnpm format:check",
     "set:admin": "tsx scripts/set-admin-claim.ts",
-    "unset:admin": "tsx scripts/set-admin-claim.ts"
+    "unset:admin": "tsx scripts/set-admin-claim.ts",
+    "check:runes": "tsx scripts/check-runes.ts"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.4",

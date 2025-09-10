@@ -1,170 +1,578 @@
 [
   {
     "id": "fehu",
-    "symbol": "ᚠ",
+    "symbol": "\u16a0",
     "name": "Fehu",
     "upright": "Wealth, beginnings, abundance",
-    "reversed": "Loss, greed, materialism"
+    "reversed": "Loss, greed, materialism",
+    "info": "",
+    "keywords": [
+      "wealth",
+      "cattle",
+      "movable wealth",
+      "beginnings"
+    ],
+    "element": "fire",
+    "phoneme": "F",
+    "altNames": [
+      "F\u00e9",
+      "Feoh"
+    ],
+    "history": "",
+    "advice": "",
+    "shadow": "",
+    "ritualIdeas": []
   },
   {
     "id": "uruz",
-    "symbol": "ᚢ",
+    "symbol": "\u16a2",
     "name": "Uruz",
     "upright": "Strength, vitality, primal power",
-    "reversed": "Weakness, lack of energy, illness"
+    "reversed": "Weakness, lack of energy, illness",
+    "info": "",
+    "keywords": [
+      "aurochs",
+      "wild ox",
+      "strength",
+      "vitality"
+    ],
+    "element": "earth",
+    "phoneme": "U",
+    "altNames": [
+      "\u00dar",
+      "Ur"
+    ],
+    "history": "",
+    "advice": "",
+    "shadow": "",
+    "ritualIdeas": []
   },
   {
     "id": "thurisaz",
-    "symbol": "ᚦ",
+    "symbol": "\u16a6",
     "name": "Thurisaz",
     "upright": "Protection, defense, conflict",
-    "reversed": "Vulnerability, attack, danger"
+    "reversed": "Vulnerability, attack, danger",
+    "info": "",
+    "keywords": [
+      "giant",
+      "thorn",
+      "protection",
+      "defense"
+    ],
+    "element": "fire",
+    "phoneme": "TH",
+    "altNames": [
+      "\u00deurs",
+      "Thurs"
+    ],
+    "history": "",
+    "advice": "",
+    "shadow": "",
+    "ritualIdeas": []
   },
   {
     "id": "ansuz",
-    "symbol": "ᚨ",
+    "symbol": "\u16a8",
     "name": "Ansuz",
     "upright": "Communication, wisdom, divine inspiration",
-    "reversed": "Miscommunication, confusion, manipulation"
+    "reversed": "Miscommunication, confusion, manipulation",
+    "info": "",
+    "keywords": [
+      "god",
+      "Odin",
+      "communication",
+      "wisdom"
+    ],
+    "element": "air",
+    "phoneme": "A",
+    "altNames": [
+      "\u00c1ss",
+      "Oss"
+    ],
+    "history": "",
+    "advice": "",
+    "shadow": "",
+    "ritualIdeas": []
   },
   {
     "id": "raidho",
-    "symbol": "ᚱ",
+    "symbol": "\u16b1",
     "name": "Raidho",
     "upright": "Journey, travel, progress, movement",
-    "reversed": "Obstacles, delays, stagnation"
+    "reversed": "Obstacles, delays, stagnation",
+    "info": "",
+    "keywords": [
+      "ride",
+      "journey",
+      "travel",
+      "progress"
+    ],
+    "element": "air",
+    "phoneme": "R",
+    "altNames": [
+      "Raidho",
+      "Raidh"
+    ],
+    "history": "",
+    "advice": "",
+    "shadow": "",
+    "ritualIdeas": []
   },
   {
     "id": "kenaz",
-    "symbol": "ᚲ",
+    "symbol": "\u16b2",
     "name": "Kenaz",
     "upright": "Knowledge, creativity, transformation",
-    "reversed": "Ignorance, lack of creativity, stagnation"
+    "reversed": "Ignorance, lack of creativity, stagnation",
+    "info": "",
+    "keywords": [
+      "torch",
+      "knowledge",
+      "creativity",
+      "transformation"
+    ],
+    "element": "fire",
+    "phoneme": "K",
+    "altNames": [
+      "Kaun",
+      "Ken"
+    ],
+    "history": "",
+    "advice": "",
+    "shadow": "",
+    "ritualIdeas": []
   },
   {
     "id": "gebo",
-    "symbol": "ᚷ",
+    "symbol": "\u16b7",
     "name": "Gebo",
     "upright": "Gift, partnership, balance, exchange",
-    "reversed": "Imbalance, selfishness, one-sidedness"
+    "reversed": "Imbalance, selfishness, one-sidedness",
+    "info": "",
+    "keywords": [
+      "gift",
+      "partnership",
+      "balance",
+      "exchange"
+    ],
+    "element": "air",
+    "phoneme": "G",
+    "altNames": [
+      "Gyfu",
+      "Gifu"
+    ],
+    "history": "",
+    "advice": "",
+    "shadow": "",
+    "ritualIdeas": []
   },
   {
     "id": "wunjo",
-    "symbol": "ᚹ",
+    "symbol": "\u16b9",
     "name": "Wunjo",
     "upright": "Joy, harmony, success, celebration",
-    "reversed": "Sorrow, disharmony, failure"
+    "reversed": "Sorrow, disharmony, failure",
+    "info": "",
+    "keywords": [
+      "joy",
+      "harmony",
+      "success",
+      "celebration"
+    ],
+    "element": "air",
+    "phoneme": "W",
+    "altNames": [
+      "Wynn",
+      "Wunjo"
+    ],
+    "history": "",
+    "advice": "",
+    "shadow": "",
+    "ritualIdeas": []
   },
   {
     "id": "hagalaz",
-    "symbol": "ᚺ",
+    "symbol": "\u16ba",
     "name": "Hagalaz",
     "upright": "Disruption, change, natural forces",
-    "reversed": "Resistance to change, blocked progress"
+    "reversed": "Resistance to change, blocked progress",
+    "info": "",
+    "keywords": [
+      "hail",
+      "disruption",
+      "change",
+      "natural forces"
+    ],
+    "element": "water",
+    "phoneme": "H",
+    "altNames": [
+      "Hagal",
+      "Hagall"
+    ],
+    "history": "",
+    "advice": "",
+    "shadow": "",
+    "ritualIdeas": []
   },
   {
     "id": "nauthiz",
-    "symbol": "ᚾ",
+    "symbol": "\u16be",
     "name": "Nauthiz",
     "upright": "Need, constraint, patience, endurance",
-    "reversed": "Release, freedom, overcoming obstacles"
+    "reversed": "Release, freedom, overcoming obstacles",
+    "info": "",
+    "keywords": [
+      "need",
+      "constraint",
+      "patience",
+      "endurance"
+    ],
+    "element": "fire",
+    "phoneme": "N",
+    "altNames": [
+      "Naud",
+      "Naudhiz"
+    ],
+    "history": "",
+    "advice": "",
+    "shadow": "",
+    "ritualIdeas": []
   },
   {
     "id": "isa",
-    "symbol": "ᛁ",
+    "symbol": "\u16c1",
     "name": "Isa",
     "upright": "Stillness, ice, patience, waiting",
-    "reversed": "Movement, thawing, impatience"
+    "reversed": "Movement, thawing, impatience",
+    "info": "",
+    "keywords": [
+      "ice",
+      "stillness",
+      "patience",
+      "waiting"
+    ],
+    "element": "water",
+    "phoneme": "I",
+    "altNames": [
+      "Is",
+      "Iss"
+    ],
+    "history": "",
+    "advice": "",
+    "shadow": "",
+    "ritualIdeas": []
   },
   {
     "id": "jera",
-    "symbol": "ᛃ",
+    "symbol": "\u16c3",
     "name": "Jera",
     "upright": "Harvest, reward, cycles, completion",
-    "reversed": "Delayed harvest, unfinished business"
+    "reversed": "Delayed harvest, unfinished business",
+    "info": "",
+    "keywords": [
+      "year",
+      "harvest",
+      "reward",
+      "cycles"
+    ],
+    "element": "earth",
+    "phoneme": "J",
+    "altNames": [
+      "Jera",
+      "Jara"
+    ],
+    "history": "",
+    "advice": "",
+    "shadow": "",
+    "ritualIdeas": []
   },
   {
     "id": "eihwaz",
-    "symbol": "ᛇ",
+    "symbol": "\u16c7",
     "name": "Eihwaz",
     "upright": "Defense, protection, endurance, yew tree",
-    "reversed": "Vulnerability, weakness, lack of protection"
+    "reversed": "Vulnerability, weakness, lack of protection",
+    "info": "",
+    "keywords": [
+      "yew",
+      "defense",
+      "protection",
+      "endurance"
+    ],
+    "element": "earth",
+    "phoneme": "EI",
+    "altNames": [
+      "Eihwaz",
+      "Eoh"
+    ],
+    "history": "",
+    "advice": "",
+    "shadow": "",
+    "ritualIdeas": []
   },
   {
     "id": "perthro",
-    "symbol": "ᛈ",
+    "symbol": "\u16c8",
     "name": "Perthro",
     "upright": "Mystery, chance, fate, destiny",
-    "reversed": "Bad luck, misfortune, negative fate"
+    "reversed": "Bad luck, misfortune, negative fate",
+    "info": "",
+    "keywords": [
+      "dice cup",
+      "mystery",
+      "chance",
+      "fate"
+    ],
+    "element": "water",
+    "phoneme": "P",
+    "altNames": [
+      "Perth",
+      "Perthro"
+    ],
+    "history": "",
+    "advice": "",
+    "shadow": "",
+    "ritualIdeas": []
   },
   {
     "id": "algiz",
-    "symbol": "ᛉ",
+    "symbol": "\u16c9",
     "name": "Algiz",
     "upright": "Protection, defense, connection to divine",
-    "reversed": "Vulnerability, lack of protection, disconnection"
+    "reversed": "Vulnerability, lack of protection, disconnection",
+    "info": "",
+    "keywords": [
+      "elk",
+      "protection",
+      "defense",
+      "divine connection"
+    ],
+    "element": "air",
+    "phoneme": "Z",
+    "altNames": [
+      "Algiz",
+      "Elhaz"
+    ],
+    "history": "",
+    "advice": "",
+    "shadow": "",
+    "ritualIdeas": []
   },
   {
     "id": "sowilo",
-    "symbol": "ᛊ",
+    "symbol": "\u16ca",
     "name": "Sowilo",
     "upright": "Success, energy, power, victory",
-    "reversed": "Failure, lack of energy, defeat"
+    "reversed": "Failure, lack of energy, defeat",
+    "info": "",
+    "keywords": [
+      "sun",
+      "success",
+      "energy",
+      "victory"
+    ],
+    "element": "fire",
+    "phoneme": "S",
+    "altNames": [
+      "Sowilo",
+      "S\u00f3l"
+    ],
+    "history": "",
+    "advice": "",
+    "shadow": "",
+    "ritualIdeas": []
   },
   {
     "id": "tiwaz",
-    "symbol": "ᛏ",
+    "symbol": "\u16cf",
     "name": "Tiwaz",
     "upright": "Justice, leadership, victory, honor",
-    "reversed": "Injustice, poor leadership, dishonor"
+    "reversed": "Injustice, poor leadership, dishonor",
+    "info": "",
+    "keywords": [
+      "Tyr",
+      "justice",
+      "leadership",
+      "honor"
+    ],
+    "element": "air",
+    "phoneme": "T",
+    "altNames": [
+      "Tiwaz",
+      "Tyr"
+    ],
+    "history": "",
+    "advice": "",
+    "shadow": "",
+    "ritualIdeas": []
   },
   {
     "id": "berkano",
-    "symbol": "ᛒ",
+    "symbol": "\u16d2",
     "name": "Berkano",
     "upright": "Growth, fertility, new beginnings, rebirth",
-    "reversed": "Stagnation, infertility, blocked growth"
+    "reversed": "Stagnation, infertility, blocked growth",
+    "info": "",
+    "keywords": [
+      "birch",
+      "growth",
+      "fertility",
+      "new beginnings"
+    ],
+    "element": "earth",
+    "phoneme": "B",
+    "altNames": [
+      "Berkano",
+      "Bjarkan"
+    ],
+    "history": "",
+    "advice": "",
+    "shadow": "",
+    "ritualIdeas": []
   },
   {
     "id": "ehwaz",
-    "symbol": "ᛖ",
+    "symbol": "\u16d6",
     "name": "Ehwaz",
     "upright": "Movement, progress, partnership, trust",
-    "reversed": "Stagnation, lack of trust, broken partnership"
+    "reversed": "Stagnation, lack of trust, broken partnership",
+    "info": "",
+    "keywords": [
+      "horse",
+      "movement",
+      "progress",
+      "partnership"
+    ],
+    "element": "earth",
+    "phoneme": "E",
+    "altNames": [
+      "Ehwaz",
+      "Eoh"
+    ],
+    "history": "",
+    "advice": "",
+    "shadow": "",
+    "ritualIdeas": []
   },
   {
     "id": "mannaz",
-    "symbol": "ᛗ",
+    "symbol": "\u16d7",
     "name": "Mannaz",
     "upright": "Humanity, community, cooperation, self",
-    "reversed": "Isolation, selfishness, lack of cooperation"
+    "reversed": "Isolation, selfishness, lack of cooperation",
+    "info": "",
+    "keywords": [
+      "man",
+      "humanity",
+      "community",
+      "cooperation"
+    ],
+    "element": "air",
+    "phoneme": "M",
+    "altNames": [
+      "Mannaz",
+      "Mann"
+    ],
+    "history": "",
+    "advice": "",
+    "shadow": "",
+    "ritualIdeas": []
   },
   {
     "id": "laguz",
-    "symbol": "ᛚ",
+    "symbol": "\u16da",
     "name": "Laguz",
     "upright": "Intuition, emotions, water, flow",
-    "reversed": "Lack of intuition, emotional blockages"
+    "reversed": "Lack of intuition, emotional blockages",
+    "info": "",
+    "keywords": [
+      "lake",
+      "water",
+      "intuition",
+      "emotions"
+    ],
+    "element": "water",
+    "phoneme": "L",
+    "altNames": [
+      "Laguz",
+      "Lagu"
+    ],
+    "history": "",
+    "advice": "",
+    "shadow": "",
+    "ritualIdeas": []
   },
   {
     "id": "ingwaz",
-    "symbol": "ᛜ",
+    "symbol": "\u16dc",
     "name": "Ingwaz",
     "upright": "Fertility, growth, internal development",
-    "reversed": "Stagnation, lack of growth, blocked development"
-  },
-  {
-    "id": "dagaz",
-    "symbol": "ᛞ",
-    "name": "Dagaz",
-    "upright": "Breakthrough, transformation, new day",
-    "reversed": "Lack of breakthrough, resistance to change"
+    "reversed": "Stagnation, lack of growth, blocked development",
+    "info": "",
+    "keywords": [
+      "Ing",
+      "fertility",
+      "growth",
+      "internal development"
+    ],
+    "element": "earth",
+    "phoneme": "NG",
+    "altNames": [
+      "Ingwaz",
+      "Ing"
+    ],
+    "history": "",
+    "advice": "",
+    "shadow": "",
+    "ritualIdeas": []
   },
   {
     "id": "othala",
-    "symbol": "ᛟ",
+    "symbol": "\u16df",
     "name": "Othala",
     "upright": "Heritage, inheritance, home, family",
-    "reversed": "Loss of heritage, family problems, homelessness"
+    "reversed": "Loss of heritage, family problems, homelessness",
+    "info": "",
+    "keywords": [
+      "heritage",
+      "inheritance",
+      "home",
+      "family"
+    ],
+    "element": "earth",
+    "phoneme": "O",
+    "altNames": [
+      "Othala",
+      "Odal"
+    ],
+    "history": "",
+    "advice": "",
+    "shadow": "",
+    "ritualIdeas": []
+  },
+  {
+    "id": "dagaz",
+    "symbol": "\u16de",
+    "name": "Dagaz",
+    "upright": "Breakthrough, transformation, new day",
+    "reversed": "Lack of breakthrough, resistance to change",
+    "info": "",
+    "keywords": [
+      "day",
+      "breakthrough",
+      "transformation",
+      "new day"
+    ],
+    "element": "air",
+    "phoneme": "D",
+    "altNames": [
+      "Dagaz",
+      "Dag"
+    ],
+    "history": "",
+    "advice": "",
+    "shadow": "",
+    "ritualIdeas": []
   }
 ]

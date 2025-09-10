@@ -86,6 +86,30 @@ service cloud.firestore {
       allow read, write: if isAdmin();
     }
 
+    // Rune favorites - owner only
+    match /favorites_runes/{uid} {
+      allow read, write: if isOwner(uid) || isAdmin();
+    }
+
+    // Rune notes - owner only, with text length validation
+    match /rune_notes/{uid}/items/{runeId} {
+      allow read, write: if isOwner(uid) || isAdmin();
+      allow create, update: if isOwner(uid) && 
+        request.resource.data.text.size() <= 2000; // Limit note text to 2000 chars
+    }
+
+    // Number favorites - owner only
+    match /favorites_numbers/{uid} {
+      allow read, write: if isOwner(uid) || isAdmin();
+    }
+
+    // Number notes - owner only, with text length validation
+    match /number_notes/{uid}/items/{numId} {
+      allow read, write: if isOwner(uid) || isAdmin();
+      allow create, update: if isOwner(uid) && 
+        request.resource.data.text.size() <= 2000; // Limit note text to 2000 chars
+    }
+
     // Default deny
     match /{document=**} {
       allow read, write: if false;

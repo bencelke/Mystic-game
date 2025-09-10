@@ -5,7 +5,7 @@ import { adminDb, serverTimestamp } from '@/lib/firebase/admin';
 import { addRitualXPAction } from '@/app/(protected)/progression/actions';
 import { spendOrbsAction } from '@/app/(protected)/orbs/actions';
 import { dailySeed, pickFrom, isReversed } from '@/lib/random/seed';
-import runesData from '@/content/runes.json';
+import { getAllRunes } from '@/lib/content/runes';
 import { checkAndConsume, formatRateLimitError } from '@/lib/security/rate-limit';
 import { checkIdempotency, storeIdempotencyResult, generateIdempotencyKey } from '@/lib/security/idempotency';
 import { ritualInputSchema } from '@/lib/validation/inputs';
@@ -57,7 +57,8 @@ export async function dailyRuneAction() {
     if (existingLog.exists) {
       // User already claimed today - return the same result
       const logData = existingLog.data() as RitualLog;
-      const rune = runesData.find(r => r.id === logData.runeId);
+      const allRunes = getAllRunes();
+      const rune = allRunes.find(r => r.id === logData.runeId);
       
       if (!rune) {
         throw new Error('Rune not found in existing log');
@@ -73,7 +74,8 @@ export async function dailyRuneAction() {
     }
 
     // First time today - generate new rune
-    const rune = pickFrom(runesData as RuneData[], seed);
+    const allRunes = getAllRunes();
+    const rune = pickFrom(allRunes as RuneData[], seed);
     const reversed = isReversed(seed);
     const xpAwarded = 10;
 
@@ -178,7 +180,8 @@ export async function twoRuneSpreadAction() {
     }
 
     // Pick 2 unique runes using crypto RNG
-    const availableRunes = [...runesData] as RuneData[];
+    const allRunes = getAllRunes();
+    const availableRunes = [...allRunes] as RuneData[];
     const selectedRunes: RuneData[] = [];
     
     // Select first rune
@@ -273,7 +276,8 @@ export async function threeRuneSpreadAction() {
     }
 
     // Pick 3 unique runes using crypto RNG
-    const availableRunes = [...runesData] as RuneData[];
+    const allRunes = getAllRunes();
+    const availableRunes = [...allRunes] as RuneData[];
     const selectedRunes: RuneData[] = [];
     
     // Select first rune

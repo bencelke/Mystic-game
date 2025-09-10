@@ -121,7 +121,7 @@ export interface GameStateDoc {
   };
 }
 
-// Rune Definition
+// Rune Definition (Legacy - for database documents)
 export interface RuneDoc {
   id: string; // Unique rune identifier
   name: string; // Rune name
@@ -132,6 +132,25 @@ export interface RuneDoc {
   orbCost: number; // Orb cost to cast
   unlockLevel: number; // Level required to unlock
   category: "protection" | "wisdom" | "strength" | "healing" | "transformation"; // Rune category
+}
+
+// Rune Content (for UI display and content management)
+export interface RuneContent {
+  id: string; // Unique rune identifier
+  symbol: string; // Rune symbol/character
+  name: string; // Rune name
+  upright: string; // Upright meaning
+  reversed?: string; // Reversed meaning (optional)
+  info?: string; // Additional information/description
+  keywords?: string[]; // Associated keywords
+  element?: "fire" | "water" | "earth" | "air"; // Elemental association
+  phoneme?: string; // Phonetic sound
+  altNames?: string[]; // Alternative names
+  // Lore fields
+  history?: string; // Historical context and lore
+  advice?: string; // Practical advice for using this rune
+  shadow?: string; // Shadow aspects and warnings
+  ritualIdeas?: string[]; // Ideas for rituals and practices
 }
 
 // Tarot Card Definition
@@ -197,6 +216,42 @@ export interface SocialInteractionDoc {
   status: "pending" | "accepted" | "declined" | "expired"; // Interaction status
   createdAt: Timestamp; // When interaction was created
   respondedAt?: Timestamp; // When interaction was responded to
+}
+
+// Rune Favorites Document
+export interface RuneFavoritesDoc {
+  [runeId: string]: boolean; // Map of rune IDs to favorite status
+}
+
+// Rune Note Document
+export interface RuneNoteDoc {
+  runeId: string; // Rune ID this note belongs to
+  text: string; // Note content
+  updatedAt: TimestampLike; // Last updated timestamp
+}
+
+// Number Favorites Document
+export interface NumberFavoritesDoc {
+  [numId: string]: boolean; // Map of number IDs to favorite status
+}
+
+// Number Note Document
+export interface NumberNoteDoc {
+  numId: number; // Number ID this note belongs to
+  text: string; // Note content
+  updatedAt: TimestampLike; // Last updated timestamp
+}
+
+// Rune Favorites Document
+export interface RuneFavoritesDoc {
+  [runeId: string]: boolean; // Map of rune IDs to favorite status
+}
+
+// Rune Note Document
+export interface RuneNoteDoc {
+  runeId: string; // Rune ID this note belongs to
+  text: string; // Note content
+  updatedAt: TimestampLike; // Last update timestamp
 }
 
 // All types are already exported above

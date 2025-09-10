@@ -10,6 +10,7 @@ import { getTodayRuneCountAction } from '@/app/(protected)/stats/actions';
 import { useAuthGate } from '@/lib/auth/useAuthGate';
 import { AuthGateDialog } from '@/components/auth/auth-gate-dialog';
 import { WheelInline } from '@/components/wheel/wheel-inline';
+import { RuneInfoButton } from './RuneInfo';
 import Link from 'next/link';
 
 interface SpreadRuneResult {
@@ -220,9 +221,12 @@ export function Spread3Panel() {
                               </div>
                               
                               {/* Rune Name */}
-                              <h3 className="text-lg font-bold text-foreground mb-2">
-                                {rune.name}
-                              </h3>
+                              <div className="flex items-center justify-center gap-2 mb-2">
+                                <h3 className="text-lg font-bold text-foreground">
+                                  {rune.name}
+                                </h3>
+                                <RuneInfoButton runeId={rune.id as any} size="sm" />
+                              </div>
                               
                               {/* Position */}
                               <div className="mb-2">

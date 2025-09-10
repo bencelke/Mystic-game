@@ -6,32 +6,43 @@ import { Badge } from '@/components/ui/badge';
 import { ACHIEVEMENT_LABELS } from '@/lib/progression/constants';
 import { getLevelProgress } from '@/lib/progression/math';
 import { useEffect, useState } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { adminDb } from '@/lib/firebase/admin';
-import runesData from '@/content/runes.json';
+import { ELDER_FUTHARK_IDS } from '@/content/runes-ids';
+import { getAllRunes } from '@/lib/content/runes';
+import { RuneInfoDialog } from '@/components/runes/RuneInfo';
+import { RuneDetailDrawer } from '@/components/runes/RuneDetailDrawer';
+import { RuneSearchFilters } from '@/components/runes/RuneSearchFilters';
+import { useRuneDrawer } from '@/hooks/useRuneDrawer';
+import { getFavoriteRunes, toggleRuneFavorite } from '@/lib/runes/favorites';
+import { RuneId } from '@/content/runes-ids';
+
+// Get all runes data
+const allRunes = getAllRunes();
+const runesMap = new Map(allRunes.map(rune => [rune.id, rune]));
 
 // Helper functions for rune data
-function getRuneSymbol(runeId: string): string {
-  const rune = runesData.find((r: any) => r.id === runeId);
-  return rune?.symbol || '?';
-}
-
-function getRuneName(runeId: string): string {
-  const rune = runesData.find((r: any) => r.id === runeId);
-  return rune?.name || 'Unknown';
+function getRuneData(runeId: string) {
+  return runesMap.get(runeId);
 }
 
 export default function CodexPage() {
   const { user, loading } = useAuth();
+  const searchParams = useSearchParams();
+  const router = useRouter();
   const [collectedRunes, setCollectedRunes] = useState<string[]>([]);
   const [collectedNumbers, setCollectedNumbers] = useState<number[]>([]);
   const [runesLoading, setRunesLoading] = useState(true);
   const [numbersLoading, setNumbersLoading] = useState(true);
+  const [filteredRunes, setFilteredRunes] = useState(allRunes);
+  const [favorites, setFavorites] = useState<Set<RuneId>>(new Set());
+  
+  // Rune drawer functionality
+  const { isOpen, currentRuneId, openRune, closeRune, changeRune } = useRuneDrawer();
 
   useEffect(() => {
     if (user) {
-      // For now, we'll use mock data since Firebase admin is not fully implemented
-      // In production, this would fetch from the actual database
-      const fetchCollectedData = async () => {
+      const fetchUserData = async () => {
         try {
           // Mock some collected runes for demonstration
           const mockCollectedRunes = ['fehu', 'uruz', 'thurisaz'];
@@ -42,14 +53,18 @@ export default function CodexPage() {
           const mockCollectedNumbers = [1, 3, 7, 11];
           setCollectedNumbers(mockCollectedNumbers);
           setNumbersLoading(false);
+
+          // Load favorites
+          const userFavorites = await getFavoriteRunes(user.uid);
+          setFavorites(userFavorites);
         } catch (error) {
-          console.error('Error fetching collected data:', error);
+          console.error('Error fetching user data:', error);
           setRunesLoading(false);
           setNumbersLoading(false);
         }
       };
 
-      fetchCollectedData();
+      fetchUserData();
     }
   }, [user]);
 
@@ -77,6 +92,25 @@ export default function CodexPage() {
   }
 
   const levelProgress = getLevelProgress(user.xp, user.level);
+
+  // Toggle favorite function
+  const handleToggleFavorite = async (runeId: RuneId) => {
+    try {
+      const newStatus = await toggleRuneFavorite(user.uid, runeId);
+      setFavorites(prev => {
+        const newFavorites = new Set(prev);
+        if (newStatus) {
+          newFavorites.add(runeId);
+        } else {
+          newFavorites.delete(runeId);
+        }
+        return newFavorites;
+      });
+    } catch (error) {
+      console.error('Error toggling favorite:', error);
+    }
+  };
+
 
   return (
     <div className="min-h-screen bg-background p-4">
@@ -168,30 +202,38 @@ export default function CodexPage() {
           <CardHeader>
             <CardTitle className="text-primary">Rune Collection</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="space-y-4">
+            {/* Search and Filters */}
+            <RuneSearchFilters
+              runes={allRunes}
+              favorites={favorites}
+              onFilterChange={setFilteredRunes}
+              onRuneClick={openRune}
+              onToggleFavorite={handleToggleFavorite}
+            />
+
             {runesLoading ? (
               <div className="text-center py-8">
                 <div className="text-muted-foreground">Loading rune collection...</div>
               </div>
             ) : (
               <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 sm:gap-3">
-                {Array.from({ length: 24 }, (_, index) => {
-                  const runeId = [
-                    'fehu', 'uruz', 'thurisaz', 'ansuz', 'raidho', 'kenaz',
-                    'gebo', 'wunjo', 'hagalaz', 'nauthiz', 'isa', 'jera',
-                    'eihwaz', 'perthro', 'algiz', 'sowilo', 'tiwaz', 'berkano',
-                    'ehwaz', 'mannaz', 'laguz', 'ingwaz', 'dagaz', 'othala'
-                  ][index];
-                  const isCollected = collectedRunes.includes(runeId);
+                {filteredRunes.map((rune) => {
+                  const isCollected = collectedRunes.includes(rune.id);
                   
                   return (
                     <div
-                      key={runeId}
-                      className={`aspect-square rounded-lg border-2 transition-all duration-300 ${
+                      key={rune.id}
+                      className={`aspect-square rounded-lg border-2 transition-all duration-300 relative cursor-pointer ${
                         isCollected
-                          ? 'border-yellow-500/50 bg-gradient-to-br from-purple-600/20 to-blue-600/20'
+                          ? 'border-yellow-500/50 bg-gradient-to-br from-purple-600/20 to-blue-600/20 hover:border-yellow-500/70'
                           : 'border-border/30 bg-card/30 opacity-50'
                       }`}
+                      onClick={() => {
+                        if (isCollected) {
+                          openRune(rune.id as RuneId);
+                        }
+                      }}
                     >
                       <div className="flex flex-col items-center justify-center h-full p-2 text-center">
                         {isCollected ? (
@@ -200,10 +242,39 @@ export default function CodexPage() {
                               className="text-2xl mb-1 font-cinzel"
                               style={{ fontFamily: 'var(--font-cinzel)' }}
                             >
-                              {getRuneSymbol(runeId)}
+                              {rune.symbol}
                             </div>
                             <div className="text-xs text-foreground font-medium">
-                              {getRuneName(runeId)}
+                              {rune.name}
+                            </div>
+                            {/* Action buttons overlay */}
+                            <div className="absolute top-1 right-1 flex gap-1">
+                              {/* Favorite button */}
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleToggleFavorite(rune.id as RuneId);
+                                }}
+                                className={`w-4 h-4 rounded-full flex items-center justify-center transition-colors ${
+                                  favorites.has(rune.id as RuneId)
+                                    ? 'bg-yellow-500/30 text-yellow-400' 
+                                    : 'bg-yellow-500/10 text-yellow-400/60 hover:bg-yellow-500/20'
+                                }`}
+                                aria-label={`${favorites.has(rune.id as RuneId) ? 'Remove from' : 'Add to'} favorites`}
+                              >
+                                <span className="text-xs">★</span>
+                              </button>
+                              
+                              {/* Info button */}
+                              <RuneInfoDialog runeId={rune.id as RuneId}>
+                                <button
+                                  className="w-4 h-4 rounded-full bg-yellow-500/20 hover:bg-yellow-500/30 flex items-center justify-center transition-colors"
+                                  aria-label={`Info about ${rune.name}`}
+                                  onClick={(e) => e.stopPropagation()}
+                                >
+                                  <span className="text-yellow-400 text-xs font-bold">i</span>
+                                </button>
+                              </RuneInfoDialog>
                             </div>
                           </>
                         ) : (
@@ -296,6 +367,14 @@ export default function CodexPage() {
           </CardContent>
         </Card>
       </div>
+
+      {/* Rune Detail Drawer */}
+      <RuneDetailDrawer
+        runeId={currentRuneId}
+        isOpen={isOpen}
+        onClose={closeRune}
+        onRuneChange={changeRune}
+      />
     </div>
   );
 }
