@@ -9,6 +9,7 @@ import { getTodayNumCountAction } from '@/app/(protected)/stats/actions';
 import { useAuthGate } from '@/lib/auth/useAuthGate';
 import { AuthGateDialog } from '@/components/auth/auth-gate-dialog';
 import { WheelInline } from '@/components/wheel/wheel-inline';
+import { ShareRow } from '@/components/share/ShareRow';
 import Link from 'next/link';
 
 export function DailyNumberPanel() {
@@ -166,6 +167,18 @@ export function DailyNumberPanel() {
                         View Codex
                       </Button>
                     </Link>
+                  </div>
+
+                  {/* Share Row */}
+                  <div className="mt-6">
+                    <ShareRow
+                      kind="number"
+                      params={{
+                        numId: result.number,
+                        dateUTC: new Date(),
+                        mode: 'daily',
+                      }}
+                    />
                   </div>
                 </>
               ) : (

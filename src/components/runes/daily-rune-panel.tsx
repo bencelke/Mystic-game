@@ -13,6 +13,7 @@ import { WheelInline } from '@/components/wheel/wheel-inline';
 import { useReducedMotion } from '@/lib/hooks/useReducedMotion';
 import { RuneInfoButton } from './RuneInfo';
 import { RuneDetailDrawer } from './RuneDetailDrawer';
+import { ShareRow } from '@/components/share/ShareRow';
 import { RuneId } from '@/content/runes-ids';
 import Link from 'next/link';
 
@@ -341,6 +342,20 @@ export function DailyRunePanel() {
           </motion.div>
         )}
       </div>
+
+      {/* Share Row - only show when rune is revealed */}
+      {isFlipped && result.rune && (
+        <div className="px-4">
+          <ShareRow
+            kind="rune"
+            params={{
+              runeId: result.rune.id,
+              reversed: result.reversed || false,
+              dateUTC: new Date(),
+            }}
+          />
+        </div>
+      )}
 
       {/* Action Buttons */}
       <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-4">

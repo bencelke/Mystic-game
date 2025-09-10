@@ -10,6 +10,7 @@ import { useAuth } from '@/lib/auth/context';
 import { useAuthGate } from '@/lib/auth/useAuthGate';
 import { AuthGateDialog } from '@/components/auth/auth-gate-dialog';
 import { WheelInline } from '@/components/wheel/wheel-inline';
+import { ShareRow } from '@/components/share/ShareRow';
 
 export function DeepReadingPanel() {
   const { user } = useAuth();
@@ -103,6 +104,18 @@ export function DeepReadingPanel() {
                       </div>
                     </CardContent>
                   </Card>
+
+                  {/* Share Row */}
+                  <div className="mt-6">
+                    <ShareRow
+                      kind="number"
+                      params={{
+                        numId: deepResult.number,
+                        dateUTC: new Date(),
+                        mode: 'deep',
+                      }}
+                    />
+                  </div>
                 </motion.div>
               )}
 

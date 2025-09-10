@@ -14,6 +14,7 @@ import { useVision } from '@/lib/vision/use-vision';
 import { useAuthGate } from '@/lib/auth/useAuthGate';
 import { AuthGateDialog } from '@/components/auth/auth-gate-dialog';
 import { WheelInline } from '@/components/wheel/wheel-inline';
+import { ShareRow } from '@/components/share/ShareRow';
 import Link from 'next/link';
 
 export function CompatibilityPanel() {
@@ -296,6 +297,17 @@ export function CompatibilityPanel() {
                       </p>
                     </div>
                   )}
+
+                  {/* Share Row */}
+                  <div className="mt-6">
+                    <ShareRow
+                      kind="compat"
+                      params={{
+                        score: result.score || 0,
+                        dateUTC: new Date(),
+                      }}
+                    />
+                  </div>
                 </motion.div>
               ) : (
                 <div className="text-center space-y-4">

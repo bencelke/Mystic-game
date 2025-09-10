@@ -11,6 +11,7 @@ import { useAuthGate } from '@/lib/auth/useAuthGate';
 import { AuthGateDialog } from '@/components/auth/auth-gate-dialog';
 import { WheelInline } from '@/components/wheel/wheel-inline';
 import { RuneInfoButton } from './RuneInfo';
+import { ShareRow } from '@/components/share/ShareRow';
 import Link from 'next/link';
 
 interface SpreadRuneResult {
@@ -264,6 +265,20 @@ export function Spread2Panel() {
               </div>
             ))}
           </div>
+
+          {/* Share Row - only show when both cards are revealed */}
+          {flippedCards.every(flipped => flipped) && result.runes && result.runes.length > 0 && (
+            <div className="mt-8">
+              <ShareRow
+                kind="rune"
+                params={{
+                  runeId: result.runes[0].id, // Share the first (primary) rune
+                  reversed: result.runes[0].reversed,
+                  dateUTC: new Date(),
+                }}
+              />
+            </div>
+          )}
 
           {/* Action Buttons */}
           <div className="flex justify-center gap-4">
