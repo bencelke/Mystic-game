@@ -1,20 +1,15 @@
 import { z } from 'zod';
-import { NUMEROLOGY_IDS, type NumId } from '@/content/numbers-ids';
+import { NUMEROLOGY_IDS, type NumberId } from '@/content/numbers-ids';
 import numbersData from '@/content/numerology.json';
 
 // Zod schema for individual number content
 const NumberContentSchema = z.object({
   id: z.number(),
   name: z.string(),
-  keywords: z.array(z.string()),
   overview: z.string(),
-  strengths: z.string(),
-  challenges: z.string(),
-  love: z.string().optional(),
-  career: z.string().optional(),
-  advice: z.array(z.string()),
-  shadow: z.string().optional(),
-  master: z.boolean(),
+  loreShort: z.string().optional(),
+  loreFull: z.string().optional(),
+  keywords: z.array(z.string()).optional(),
 });
 
 // Zod schema for the numbers array
@@ -24,7 +19,7 @@ const NumbersArraySchema = z.array(NumberContentSchema);
 export type NumberContent = z.infer<typeof NumberContentSchema>;
 
 // Type for the numbers record (Map-like structure)
-export type NumberRecord = Record<NumId, NumberContent>;
+export type NumberRecord = Map<NumberId, NumberContent>;
 
 // Validate and parse numbers data
 let validatedNumbers: NumberContent[] | null = null;
@@ -51,7 +46,7 @@ function validateNumbersData() {
       // Check for extra IDs not in canonical list
       const extraIds = validatedNumbers
         .map(n => n.id)
-        .filter(id => !NUMEROLOGY_IDS.includes(id as NumId));
+        .filter(id => !NUMEROLOGY_IDS.includes(id as NumberId));
       
       if (extraIds.length > 0) {
         console.warn('Extra number IDs not in canonical list:', extraIds);
@@ -77,26 +72,39 @@ function validateNumbersData() {
 function createNumbersMap(): NumberRecord {
   if (numbersMap === null) {
     const numbers = validateNumbersData();
-    numbersMap = {} as NumberRecord;
+    numbersMap = new Map();
     
     for (const number of numbers) {
-      numbersMap[number.id as NumId] = number;
+      numbersMap.set(number.id as NumberId, number);
     }
   }
   return numbersMap;
 }
 
 // Public API functions
-export async function getNumbers(): Promise<NumberRecord> {
+export async function getNumbersMap(): Promise<NumberRecord> {
   return createNumbersMap();
 }
 
-export function getNumber(id: NumId): NumberContent | undefined {
+export function getNumber(id: NumberId): NumberContent | undefined {
   const numbers = createNumbersMap();
-  return numbers[id];
+  return numbers.get(id);
 }
 
-export function missingIds(): NumId[] {
+export function getNumberFull(id: NumberId): NumberContent | undefined {
+  const number = getNumber(id);
+  if (!number) return undefined;
+  
+  // Return number with all optional fields filled with defaults
+  return {
+    ...number,
+    loreShort: number.loreShort || '',
+    loreFull: number.loreFull || '',
+    keywords: number.keywords || [],
+  };
+}
+
+export function missingNumberIds(): NumberId[] {
   const numbers = validateNumbersData();
   const presentIds = new Set(numbers.map(n => n.id));
   return NUMEROLOGY_IDS.filter(id => !presentIds.has(id));
@@ -106,30 +114,25 @@ export function getAllNumbers(): NumberContent[] {
   return validateNumbersData();
 }
 
-// Development helper to check for missing content
-export function getNumbersWithMissingContent(): NumId[] {
+// Development helper to check for missing lore fields
+export function getNumbersWithMissingLore(): NumberId[] {
   const numbers = validateNumbersData();
   return numbers
-    .filter(number => 
-      !number.overview || 
-      number.overview.trim() === '' ||
-      !number.strengths ||
-      number.strengths.trim() === ''
-    )
-    .map(number => number.id as NumId);
+    .filter(number => !number.loreShort || number.loreShort.trim() === '' || !number.loreFull || number.loreFull.trim() === '')
+    .map(number => number.id as NumberId);
 }
 
 // Log warnings on module load in development
 if (typeof window === 'undefined' && process.env.NODE_ENV === 'development') {
   try {
-    const missing = missingIds();
+    const missing = missingNumberIds();
     if (missing.length > 0) {
       console.warn(`Missing canonical number IDs: ${missing.join(', ')}`);
     }
     
-    const missingContent = getNumbersWithMissingContent();
-    if (missingContent.length > 0) {
-      console.warn(`Numbers with missing content: ${missingContent.join(', ')}`);
+    const missingLore = getNumbersWithMissingLore();
+    if (missingLore.length > 0) {
+      console.warn(`Numbers with missing lore fields: ${missingLore.join(', ')}`);
     }
   } catch (error) {
     console.error('Error validating number data on load:', error);

@@ -1,0 +1,200 @@
+{
+  "runes": {
+    "fehu": [
+      {
+        "q": "Fehu is mainly associated with…",
+        "choices": ["Wealth & resources", "Storms", "Exile"],
+        "answer": 0,
+        "explanation": "Fehu relates to movable wealth and beginnings."
+      },
+      {
+        "q": "A reversed Fehu often signals…",
+        "choices": ["Loss or blockage", "Travel", "Thunder"],
+        "answer": 0,
+        "explanation": "Reversed Fehu can point to leaks or stalled flow."
+      },
+      {
+        "q": "The element associated with Fehu is…",
+        "choices": ["Fire", "Water", "Earth"],
+        "answer": 0,
+        "explanation": "Fehu's energy is dynamic and forward-moving like fire."
+      }
+    ],
+    "uruz": [
+      {
+        "q": "Uruz represents…",
+        "choices": ["Strength & vitality", "Wisdom", "Peace"],
+        "answer": 0,
+        "explanation": "Uruz embodies raw physical and mental strength."
+      },
+      {
+        "q": "The animal most associated with Uruz is the…",
+        "choices": ["Wild ox", "Wolf", "Eagle"],
+        "answer": 0,
+        "explanation": "The wild ox symbolizes untamed power and determination."
+      }
+    ],
+    "thurisaz": [
+      {
+        "q": "Thurisaz is connected to…",
+        "choices": ["Giants & chaos", "Love", "Harvest"],
+        "answer": 0,
+        "explanation": "Thurisaz represents the destructive yet creative force of giants."
+      },
+      {
+        "q": "When Thurisaz appears, it often means…",
+        "choices": ["A breakthrough is coming", "Stay still", "Avoid conflict"],
+        "answer": 0,
+        "explanation": "Thurisaz can break through obstacles and barriers."
+      }
+    ],
+    "ansuz": [
+      {
+        "q": "Ansuz is the rune of…",
+        "choices": ["Communication & wisdom", "War", "Wealth"],
+        "answer": 0,
+        "explanation": "Ansuz governs speech, divine inspiration, and knowledge."
+      },
+      {
+        "q": "The god most associated with Ansuz is…",
+        "choices": ["Odin", "Thor", "Freyr"],
+        "answer": 0,
+        "explanation": "Odin is the god of wisdom and communication."
+      }
+    ],
+    "raidho": [
+      {
+        "q": "Raidho symbolizes…",
+        "choices": ["Journey & movement", "Stillness", "Conflict"],
+        "answer": 0,
+        "explanation": "Raidho represents both physical and spiritual journeys."
+      }
+    ],
+    "kenaz": [
+      {
+        "q": "Kenaz is associated with…",
+        "choices": ["Fire & creativity", "Water", "Earth"],
+        "answer": 0,
+        "explanation": "Kenaz represents the controlled fire of creativity and knowledge."
+      }
+    ],
+    "gebo": [
+      {
+        "q": "Gebo means…",
+        "choices": ["Gift & exchange", "War", "Death"],
+        "answer": 0,
+        "explanation": "Gebo represents the sacred act of giving and receiving."
+      }
+    ],
+    "wunjo": [
+      {
+        "q": "Wunjo brings…",
+        "choices": ["Joy & harmony", "Conflict", "Loss"],
+        "answer": 0,
+        "explanation": "Wunjo represents the joy that comes from alignment and completion."
+      }
+    ]
+  },
+  "numbers": {
+    "1": [
+      {
+        "q": "Number 1 represents…",
+        "choices": ["New beginnings & leadership", "Endings", "Balance"],
+        "answer": 0,
+        "explanation": "One is the number of initiation and independent action."
+      },
+      {
+        "q": "The energy of Number 1 is…",
+        "choices": ["Masculine & direct", "Feminine & receptive", "Neutral"],
+        "answer": 0,
+        "explanation": "Number 1 has masculine, pioneering energy."
+      }
+    ],
+    "2": [
+      {
+        "q": "Number 2 is about…",
+        "choices": ["Cooperation & balance", "Conflict", "Isolation"],
+        "answer": 0,
+        "explanation": "Two represents partnership and the search for harmony."
+      }
+    ],
+    "3": [
+      {
+        "q": "Number 3 embodies…",
+        "choices": ["Creativity & expression", "Destruction", "Stagnation"],
+        "answer": 0,
+        "explanation": "Three represents creative expression and communication."
+      }
+    ],
+    "4": [
+      {
+        "q": "Number 4 is associated with…",
+        "choices": ["Stability & foundation", "Chaos", "Change"],
+        "answer": 0,
+        "explanation": "Four represents solid foundations and practical matters."
+      }
+    ],
+    "5": [
+      {
+        "q": "Number 5 represents…",
+        "choices": ["Freedom & adventure", "Restriction", "Stability"],
+        "answer": 0,
+        "explanation": "Five embodies freedom, change, and adventure."
+      }
+    ],
+    "6": [
+      {
+        "q": "Number 6 is about…",
+        "choices": ["Love & responsibility", "Selfishness", "Isolation"],
+        "answer": 0,
+        "explanation": "Six represents love, family, and taking responsibility."
+      }
+    ],
+    "7": [
+      {
+        "q": "Number 7 resonates with…",
+        "choices": ["Analysis & introspection", "Impulsivity", "Authority"],
+        "answer": 0,
+        "explanation": "Seven is the seeker and the thinker."
+      },
+      {
+        "q": "Number 7 is considered…",
+        "choices": ["A spiritual number", "A material number", "A neutral number"],
+        "answer": 0,
+        "explanation": "Seven has strong spiritual and mystical associations."
+      }
+    ],
+    "8": [
+      {
+        "q": "Number 8 represents…",
+        "choices": ["Material success & authority", "Spirituality", "Chaos"],
+        "answer": 0,
+        "explanation": "Eight is associated with material achievement and power."
+      }
+    ],
+    "9": [
+      {
+        "q": "Number 9 embodies…",
+        "choices": ["Completion & wisdom", "Beginnings", "Conflict"],
+        "answer": 0,
+        "explanation": "Nine represents the end of cycles and accumulated wisdom."
+      }
+    ],
+    "11": [
+      {
+        "q": "Master Number 11 is…",
+        "choices": ["Intuitive & inspirational", "Materialistic", "Destructive"],
+        "answer": 0,
+        "explanation": "Eleven is a master number of intuition and inspiration."
+      }
+    ],
+    "22": [
+      {
+        "q": "Master Number 22 is the…",
+        "choices": ["Master Builder", "Master Destroyer", "Master Thinker"],
+        "answer": 0,
+        "explanation": "Twenty-two is the Master Builder, capable of manifesting grand visions."
+      }
+    ]
+  }
+}

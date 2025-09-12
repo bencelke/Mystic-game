@@ -1,0 +1,26 @@
+{
+  "quiz": {
+    "title": "Quick Quiz",
+    "startQuiz": "Start Quiz",
+    "retakeQuiz": "Retake Quiz",
+    "testKnowledge": "Test your knowledge",
+    "question": "Question",
+    "of": "of",
+    "next": "Next",
+    "finish": "Finish",
+    "correct": "Correct!",
+    "incorrect": "Try again",
+    "explanation": "Explanation",
+    "quizComplete": "Quiz Complete!",
+    "score": "You got {correct} out of {total} correct ({percent}%)",
+    "xpEarned": "+{xp} XP earned",
+    "perfectBonus": "Perfect score bonus: +15 XP",
+    "noQuestions": "No questions available yet",
+    "bestScore": "Best: {percent}%",
+    "attempts": "Attempts: {count}",
+    "lastScore": "Last: {percent}%",
+    "lockedTitle": "Quiz Locked",
+    "lockedMessage": "Discover this item in a ritual to unlock its quiz",
+    "unlockCTA": "Perform a Ritual"
+  }
+}

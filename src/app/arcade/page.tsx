@@ -70,7 +70,7 @@ export default function ArcadePage() {
         <div className="text-center relative">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide text-foreground">
             Welcome to{' '}
-            <span className="text-yellow-400">Explore</span>
+            <span className="text-yellow-400">Mystic</span>
           </h1>
           <p className="mt-2 sm:mt-4 text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base">
             Discover your mystical journey through ancient wisdom and cosmic guidance.

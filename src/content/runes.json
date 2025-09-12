@@ -18,10 +18,12 @@
       "F\u00e9",
       "Feoh"
     ],
-    "history": "",
-    "advice": "",
-    "shadow": "",
-    "ritualIdeas": []
+    "loreShort": "The first rune represents movable wealth and the power of new beginnings.",
+    "loreFull": "Fehu, the first rune of the Elder Futhark, represents the primal force of wealth and abundance. In ancient times, cattle were the primary form of movable wealth, making this rune a symbol of prosperity and material success. The energy of Fehu is dynamic and forward-moving, always seeking new opportunities for growth and expansion. When this rune appears in a reading, it often indicates the beginning of a new phase in life, whether in relationships, career, or personal development. The power of Fehu lies not just in accumulation, but in the wise use and sharing of resources. In Norse mythology, this rune was associated with the god Freyr, who ruled over fertility and prosperity. The reversed position warns against greed and the hoarding of resources, reminding us that true wealth comes from generosity and the ability to create value for others.",
+    "history": "Fehu was used by ancient Germanic peoples to mark cattle and other valuable possessions. The rune's shape resembles the horns of an ox, symbolizing strength and fertility.",
+    "advice": "Use your resources wisely and be generous with others. New opportunities are coming your way.",
+    "shadow": "Beware of greed and materialism. True wealth comes from within, not from external possessions.",
+    "ritualIdeas": ["Light a green candle to attract abundance", "Carry a small piece of gold or silver", "Meditate on gratitude for what you have"]
   },
   {
     "id": "uruz",
@@ -42,10 +44,12 @@
       "\u00dar",
       "Ur"
     ],
-    "history": "",
-    "advice": "",
-    "shadow": "",
-    "ritualIdeas": []
+    "loreShort": "The wild ox rune embodies raw strength and the power of untamed nature.",
+    "loreFull": "Uruz represents the primal power of the wild ox, a symbol of untamed strength and vitality. This rune embodies the raw energy of nature, the force that drives all living things to survive and thrive. In ancient times, the aurochs was a massive wild ox that roamed the forests of Europe, representing the untamed power of the natural world. The energy of Uruz is physical, earthy, and deeply connected to the life force that flows through all living things. When this rune appears in a reading, it often indicates a time of great physical or spiritual strength, a period when you can overcome any obstacle through sheer determination and willpower. The reversed position warns against overexertion and the need to conserve energy for the challenges ahead.",
+    "history": "The aurochs was hunted to extinction in the 17th century, but its power lives on in the Uruz rune.",
+    "advice": "Trust in your inner strength and don't be afraid to take bold action.",
+    "shadow": "Avoid overexertion and remember that even the strongest need rest.",
+    "ritualIdeas": ["Exercise or engage in physical activity", "Spend time in nature", "Meditate on your inner strength"]
   },
   {
     "id": "thurisaz",

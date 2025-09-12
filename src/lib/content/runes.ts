@@ -15,6 +15,8 @@ const RuneContentSchema = z.object({
   phoneme: z.string().optional(),
   altNames: z.array(z.string()).optional(),
   // Lore fields
+  loreShort: z.string().optional(),
+  loreFull: z.string().optional(),
   history: z.string().optional(),
   advice: z.string().optional(),
   shadow: z.string().optional(),

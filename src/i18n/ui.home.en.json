@@ -1,0 +1,24 @@
+{
+  "home": {
+    "title": "Mystic — Play & Learn",
+    "subtitle": "Discover your mystical journey through ancient wisdom and cosmic guidance",
+    "openMystic": "Open Mystic",
+    "openMysticBook": "Open Mystic Book",
+    "today": "Today",
+    "dailyRune": "Daily Rune",
+    "dailyNumber": "Daily Number",
+    "reveal": "Reveal",
+    "unlocked": "Unlocked",
+    "locked": "Locked",
+    "progress": "Progress",
+    "runes": "Runes",
+    "numbers": "Numbers",
+    "quizzes": "Quizzes",
+    "continueLearning": "Continue Learning",
+    "resumePath": "Resume: {name} — Step {current}/{total}",
+    "startRuneBasics": "Start Rune Basics",
+    "startNumerologyJourney": "Start Numerology Journey",
+    "bestAvg": "Best Avg",
+    "attempted": "Attempted"
+  }
+}

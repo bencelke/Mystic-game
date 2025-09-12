@@ -10,6 +10,16 @@ import { useAuthGate } from '@/lib/auth/useAuthGate';
 import { AuthGateDialog } from '@/components/auth/auth-gate-dialog';
 import { WheelInline } from '@/components/wheel/wheel-inline';
 import { ShareRow } from '@/components/share/ShareRow';
+import { DailyLoreCard } from '@/components/lore/DailyLoreCard';
+import { LorePreviewCard } from '@/components/lore/LorePreviewCard';
+import { QuizModal } from '@/components/quiz/QuizModal';
+import { getNumberQuiz } from '@/lib/quiz/loader';
+import { PromptCard } from '@/components/journal/PromptCard';
+import { pickPromptForNumber, todayUTCKey } from '@/lib/journal/prompts';
+import { getJournalEntry } from '@/lib/progress/local';
+import { dailyNumberLore } from '@/lib/lore/daily';
+import { unlockNumber } from '@/lib/progress/local';
+import { NumberId } from '@/content/numbers-ids';
 import Link from 'next/link';
 
 export function DailyNumberPanel() {
@@ -17,6 +27,7 @@ export function DailyNumberPanel() {
   const [loading, setLoading] = useState(true);
   const [isFlipped, setIsFlipped] = useState(false);
   const [othersCount, setOthersCount] = useState<number | null>(null);
+  const [isQuizModalOpen, setIsQuizModalOpen] = useState(false);
   const { ensureAuthed, isOpen, onOpenChange, onAuthenticated } = useAuthGate();
 
   const fetchOthersCount = async (number: number) => {
@@ -39,6 +50,8 @@ export function DailyNumberPanel() {
       setResult(numerologyResult);
       
       if (numerologyResult.success && numerologyResult.number) {
+        // Unlock the number locally
+        unlockNumber(numerologyResult.number as NumberId);
         // Trigger flip animation after a short delay
         setTimeout(() => setIsFlipped(true), 500);
         // Fetch others count
@@ -161,10 +174,34 @@ export function DailyNumberPanel() {
                     </div>
                   )}
 
+                  {/* Daily Lore Card */}
+                  <div className="mt-6">
+                    <DailyLoreCard
+                      title="Lore of the Day"
+                      itemName={result.number === 11 || result.number === 22 
+                        ? `${result.number} (Master Number)` 
+                        : `Number ${result.number}`
+                      }
+                      loreShort={dailyNumberLore()?.loreShort || "Numerical wisdom guides your path today."}
+                      onViewFull={() => {
+                        // TODO: Open number detail in Mystic Book
+                        window.location.href = '/book';
+                      }}
+                    />
+                  </div>
+
+                  {/* Lore Preview Card */}
+                  <div className="mt-4">
+                    <LorePreviewCard
+                      kind="number"
+                      id={result.number}
+                    />
+                  </div>
+
                   <div className="pt-4">
-                    <Link href="/codex">
+                    <Link href="/book">
                       <Button variant="outline" className="w-full">
-                        View Codex
+                        View Mystic Book
                       </Button>
                     </Link>
                   </div>
@@ -177,6 +214,35 @@ export function DailyNumberPanel() {
                         numId: result.number,
                         dateUTC: new Date(),
                         mode: 'daily',
+                      }}
+                    />
+                  </div>
+
+                  {/* Quiz Button - only show if has quiz content */}
+                  {getNumberQuiz(result.number).length > 0 && (
+                    <div className="mt-4">
+                      <Button
+                        onClick={() => setIsQuizModalOpen(true)}
+                        variant="outline"
+                        className="w-full border-yellow-500/30 text-yellow-300 hover:bg-yellow-500/10"
+                      >
+                        Test your knowledge
+                      </Button>
+                    </div>
+                  )}
+
+                  {/* Reflection Prompt */}
+                  <div className="mt-4">
+                    <PromptCard
+                      kind="number"
+                      ref={result.number}
+                      prompt={pickPromptForNumber(result.number, todayUTCKey())}
+                      existing={getJournalEntry('number', String(result.number), todayUTCKey())?.text || ''}
+                      onSave={(saved) => {
+                        if (saved) {
+                          // Refresh the component to show updated state
+                          window.location.reload();
+                        }
                       }}
                     />
                   </div>
@@ -214,6 +280,17 @@ export function DailyNumberPanel() {
         onOpenChange={onOpenChange}
         onAuthenticated={onAuthenticated}
       />
+
+      {/* Quiz Modal */}
+      {result?.number && (
+        <QuizModal
+          open={isQuizModalOpen}
+          onOpenChange={setIsQuizModalOpen}
+          kind="number"
+          id={result.number}
+          max={5}
+        />
+      )}
     </div>
   );
 }

@@ -1,0 +1,22 @@
+{
+  "learn": {
+    "title": "Learn",
+    "description": "Deepen your understanding of runes and numerology",
+    "resumePath": "Resume Path",
+    "continue": "Continue",
+    "suggestedQuiz": "Suggested Quiz",
+    "startQuiz": "Start Quiz",
+    "todaysReflection": "Today's Reflection",
+    "writeNote": "Write Note",
+    "progressOverview": "Progress Overview",
+    "runesProgress": "Runes Progress",
+    "numbersProgress": "Numbers Progress",
+    "quizAverage": "Quiz Average",
+    "noPath": "No active learning path",
+    "startLearning": "Start Learning",
+    "runeBasics": "Rune Basics",
+    "numerologyJourney": "Numerology Journey",
+    "perfectQuiz": "Perfect Quiz",
+    "bestScore": "Best Score"
+  }
+}

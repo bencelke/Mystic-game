@@ -14,7 +14,16 @@ import { useReducedMotion } from '@/lib/hooks/useReducedMotion';
 import { RuneInfoButton } from './RuneInfo';
 import { RuneDetailDrawer } from './RuneDetailDrawer';
 import { ShareRow } from '@/components/share/ShareRow';
+import { DailyLoreCard } from '@/components/lore/DailyLoreCard';
+import { LorePreviewCard } from '@/components/lore/LorePreviewCard';
+import { QuizModal } from '@/components/quiz/QuizModal';
+import { getRuneQuiz } from '@/lib/quiz/loader';
+import { PromptCard } from '@/components/journal/PromptCard';
+import { pickPromptForRune, todayUTCKey } from '@/lib/journal/prompts';
+import { getJournalEntry } from '@/lib/progress/local';
+import { dailyRuneLore } from '@/lib/lore/daily';
 import { RuneId } from '@/content/runes-ids';
+import { unlockRune } from '@/lib/progress/local';
 import Link from 'next/link';
 
 interface RuneData {
@@ -22,7 +31,7 @@ interface RuneData {
   symbol: string;
   name: string;
   upright: string;
-  reversed: string;
+  reversed?: string;
 }
 
 interface DailyRuneResult {
@@ -43,6 +52,7 @@ export function DailyRunePanel() {
   const [othersCount, setOthersCount] = useState<number | null>(null);
   const [selectedRuneId, setSelectedRuneId] = useState<RuneId | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isQuizModalOpen, setIsQuizModalOpen] = useState(false);
   const { ensureAuthed, isOpen, onOpenChange, onAuthenticated } = useAuthGate();
   const prefersReducedMotion = useReducedMotion();
 
@@ -64,8 +74,9 @@ export function DailyRunePanel() {
         if (response.alreadyClaimed) {
           setIsFlipped(true);
         }
-        // Fetch others count if we have a rune
+        // Unlock the rune locally
         if (response.rune) {
+          unlockRune(response.rune.id as RuneId);
           fetchOthersCount(response.rune.id);
         }
       } else {
@@ -82,8 +93,9 @@ export function DailyRunePanel() {
     if (!isFlipped && result && result.success && !result.alreadyClaimed) {
       await ensureAuthed();
       setIsFlipped(true);
-      // Fetch others count when revealing
+      // Unlock the rune locally and fetch others count when revealing
       if (result.rune) {
+        unlockRune(result.rune.id as RuneId);
         fetchOthersCount(result.rune.id);
       }
     }
@@ -198,8 +210,10 @@ export function DailyRunePanel() {
                           runeId={result.rune.id as any} 
                           size="sm"
                           onClick={() => {
-                            setSelectedRuneId(result.rune.id as RuneId);
-                            setIsDrawerOpen(true);
+                            if (result.rune) {
+                              setSelectedRuneId(result.rune.id as RuneId);
+                              setIsDrawerOpen(true);
+                            }
                           }}
                         />
                       </div>
@@ -328,7 +342,7 @@ export function DailyRunePanel() {
                               +{result.xpAwarded} XP earned!
                             </p>
                             <p className="text-muted-foreground text-xs mt-1">
-                              Rune unlocked in your codex
+                              Rune unlocked in your Mystic Book
                             </p>
                           </div>
                         )}
@@ -342,6 +356,34 @@ export function DailyRunePanel() {
           </motion.div>
         )}
       </div>
+
+      {/* Daily Lore Card - only show when rune is revealed */}
+      {isFlipped && result.rune && (
+        <div className="px-4 mb-4">
+          <DailyLoreCard
+            title="Lore of the Day"
+            itemName={result.rune.name}
+            itemSymbol={result.rune.symbol}
+            loreShort={dailyRuneLore()?.loreShort || "Ancient wisdom flows through this rune today."}
+            onViewFull={() => {
+              if (result.rune) {
+                setSelectedRuneId(result.rune.id as RuneId);
+                setIsDrawerOpen(true);
+              }
+            }}
+          />
+        </div>
+      )}
+
+      {/* Lore Preview Card - only show when rune is revealed */}
+      {isFlipped && result.rune && (
+        <div className="px-4 mb-4">
+          <LorePreviewCard
+            kind="rune"
+            id={result.rune.id}
+          />
+        </div>
+      )}
 
       {/* Share Row - only show when rune is revealed */}
       {isFlipped && result.rune && (
@@ -357,14 +399,45 @@ export function DailyRunePanel() {
         </div>
       )}
 
+      {/* Quiz Button - only show when rune is revealed and has quiz content */}
+      {isFlipped && result.rune && getRuneQuiz(result.rune.id).length > 0 && (
+        <div className="px-4 mb-4">
+          <Button
+            onClick={() => setIsQuizModalOpen(true)}
+            variant="outline"
+            className="w-full border-yellow-500/30 text-yellow-300 hover:bg-yellow-500/10"
+          >
+            Test your knowledge
+          </Button>
+        </div>
+      )}
+
+      {/* Reflection Prompt - only show when rune is revealed */}
+      {isFlipped && result.rune && (
+        <div className="px-4 mb-4">
+          <PromptCard
+            kind="rune"
+            ref={result.rune.id}
+            prompt={pickPromptForRune(result.rune.id, todayUTCKey())}
+            existing={getJournalEntry('rune', result.rune.id, todayUTCKey())?.text || ''}
+            onSave={(saved) => {
+              if (saved) {
+                // Refresh the component to show updated state
+                window.location.reload();
+              }
+            }}
+          />
+        </div>
+      )}
+
       {/* Action Buttons */}
       <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-4">
-        <Link href="/codex" className="w-full sm:w-auto">
+        <Link href="/book" className="w-full sm:w-auto">
           <Button 
             variant="outline" 
             className="w-full min-h-[44px] border-yellow-500/30 text-yellow-300 hover:bg-yellow-500/10"
           >
-            View Codex
+            View Mystic Book
           </Button>
         </Link>
         
@@ -388,7 +461,7 @@ export function DailyRunePanel() {
           </h3>
           <p className="text-muted-foreground text-sm">
             Each day, you receive one free rune from the Elder Futhark. 
-            The same rune appears for you all day, and each rune unlocks in your codex collection.
+            The same rune appears for you all day, and each rune unlocks in your Mystic Book collection.
           </p>
         </CardContent>
       </Card>
@@ -417,6 +490,17 @@ export function DailyRunePanel() {
           setSelectedRuneId(null);
         }}
       />
+
+      {/* Quiz Modal */}
+      {result?.rune && (
+        <QuizModal
+          open={isQuizModalOpen}
+          onOpenChange={setIsQuizModalOpen}
+          kind="rune"
+          id={result.rune.id}
+          max={5}
+        />
+      )}
     </div>
   );
 }

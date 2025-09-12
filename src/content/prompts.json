@@ -1,0 +1,230 @@
+{
+  "runes": {
+    "fehu": [
+      "Where do you see resources flowing in your life today?",
+      "What boundary helps you protect your energy and wealth?",
+      "How can you share your abundance with others?",
+      "What new beginning is calling to you?"
+    ],
+    "uruz": [
+      "Where do you feel your inner strength today?",
+      "What challenge is asking you to be more courageous?",
+      "How can you channel your raw power constructively?",
+      "What physical or mental strength are you developing?"
+    ],
+    "thurisaz": [
+      "What needs to be broken down to make way for new growth?",
+      "Where do you feel the energy of transformation?",
+      "What protective force is watching over you?",
+      "How can you use your power wisely today?"
+    ],
+    "ansuz": [
+      "What wisdom are you receiving from the universe?",
+      "How can you better communicate your truth today?",
+      "What divine inspiration is flowing through you?",
+      "Where do you need to listen more than speak?"
+    ],
+    "raidho": [
+      "What journey are you currently on?",
+      "How can you move forward with purpose today?",
+      "What rhythm or pattern is guiding your path?",
+      "Where do you need to take action vs. wait?"
+    ],
+    "kenaz": [
+      "What creative fire is burning within you?",
+      "How can you illuminate knowledge for others?",
+      "What skill or talent wants to be expressed?",
+      "Where do you need to bring more light?"
+    ],
+    "gebo": [
+      "What gift are you ready to give or receive?",
+      "How can you create more balance in your relationships?",
+      "What exchange of energy feels right today?",
+      "Where do you need to practice generosity?"
+    ],
+    "wunjo": [
+      "What brings you joy and harmony today?",
+      "How can you create more peace in your life?",
+      "What completion or success are you celebrating?",
+      "Where do you feel most aligned and happy?"
+    ],
+    "hagalaz": [
+      "What disruption is actually clearing the way?",
+      "How can you find peace within the storm?",
+      "What old patterns need to be released?",
+      "Where do you need to surrender control?"
+    ],
+    "nauthiz": [
+      "What constraint is actually helping you grow?",
+      "How can you find strength in limitation?",
+      "What need is driving you forward?",
+      "Where do you need to be more patient?"
+    ],
+    "isa": [
+      "What needs to slow down or stop completely?",
+      "How can you find stillness in the chaos?",
+      "What is frozen that needs to thaw?",
+      "Where do you need to conserve your energy?"
+    ],
+    "jera": [
+      "What cycle is completing in your life?",
+      "How can you honor the natural timing of things?",
+      "What harvest are you ready to reap?",
+      "Where do you need to trust the process?"
+    ],
+    "eihwaz": [
+      "What obstacle is actually a teacher?",
+      "How can you find wisdom in difficulty?",
+      "What transformation is happening in the shadows?",
+      "Where do you need to be more resilient?"
+    ],
+    "perthro": [
+      "What mystery are you ready to explore?",
+      "How can you embrace the unknown?",
+      "What chance or opportunity is calling?",
+      "Where do you need to trust your intuition?"
+    ],
+    "algiz": [
+      "What are you protecting or defending today?",
+      "How can you create stronger boundaries?",
+      "What connection to the divine do you feel?",
+      "Where do you need to stand your ground?"
+    ],
+    "sowilo": [
+      "What success are you celebrating today?",
+      "How can you shine your light brighter?",
+      "What victory is within your reach?",
+      "Where do you need to be more confident?"
+    ],
+    "tiwaz": [
+      "What battle is worth fighting today?",
+      "How can you stand up for what's right?",
+      "What justice needs to be served?",
+      "Where do you need to be more courageous?"
+    ],
+    "berkano": [
+      "What new life or project is growing?",
+      "How can you nurture something important?",
+      "What family or community needs your care?",
+      "Where do you need to be more nurturing?"
+    ],
+    "ehwaz": [
+      "What partnership is moving you forward?",
+      "How can you work better with others?",
+      "What change is happening through cooperation?",
+      "Where do you need to trust the process?"
+    ],
+    "mannaz": [
+      "What does it mean to be human today?",
+      "How can you better understand yourself?",
+      "What wisdom comes from your humanity?",
+      "Where do you need to be more self-aware?"
+    ],
+    "laguz": [
+      "What emotions are flowing through you?",
+      "How can you trust your intuition more?",
+      "What depths are you ready to explore?",
+      "Where do you need to go with the flow?"
+    ],
+    "ingwaz": [
+      "What potential is ready to be realized?",
+      "How can you focus your energy for growth?",
+      "What new phase is beginning?",
+      "Where do you need to concentrate your efforts?"
+    ],
+    "othala": [
+      "What legacy are you creating?",
+      "How can you honor your heritage?",
+      "What inheritance are you ready to receive?",
+      "Where do you need to establish deeper roots?"
+    ],
+    "dagaz": [
+      "What breakthrough is happening?",
+      "How can you embrace this transformation?",
+      "What new day is dawning?",
+      "Where do you need to see things differently?"
+    ]
+  },
+  "numbers": {
+    "1": [
+      "What new beginning are you initiating today?",
+      "How can you lead with more confidence?",
+      "What independence are you claiming?",
+      "Where do you need to be more assertive?"
+    ],
+    "2": [
+      "What partnership needs your attention?",
+      "How can you create more harmony?",
+      "What balance are you seeking?",
+      "Where do you need to be more diplomatic?"
+    ],
+    "3": [
+      "What creative expression wants to come through?",
+      "How can you communicate more joyfully?",
+      "What inspiration are you sharing?",
+      "Where do you need to be more optimistic?"
+    ],
+    "4": [
+      "What foundation are you building?",
+      "How can you be more practical today?",
+      "What structure needs your attention?",
+      "Where do you need to be more disciplined?"
+    ],
+    "5": [
+      "What freedom are you seeking?",
+      "How can you embrace change more fully?",
+      "What adventure is calling?",
+      "Where do you need to be more adaptable?"
+    ],
+    "6": [
+      "What responsibility are you taking on?",
+      "How can you nurture others better?",
+      "What harmony are you creating?",
+      "Where do you need to be more caring?"
+    ],
+    "7": [
+      "What question are you researching?",
+      "How can you create more quiet for insight?",
+      "What spiritual truth are you discovering?",
+      "Where do you need to trust your intuition?"
+    ],
+    "8": [
+      "What material success are you building?",
+      "How can you use your authority wisely?",
+      "What power are you stepping into?",
+      "Where do you need to be more confident?"
+    ],
+    "9": [
+      "What cycle is completing?",
+      "How can you share your wisdom?",
+      "What universal truth are you understanding?",
+      "Where do you need to be more compassionate?"
+    ],
+    "11": [
+      "What intuitive insight are you receiving?",
+      "How can you inspire others today?",
+      "What spiritual message are you channeling?",
+      "Where do you need to trust your higher knowing?"
+    ],
+    "22": [
+      "What grand vision are you manifesting?",
+      "How can you build something lasting?",
+      "What master plan are you executing?",
+      "Where do you need to think bigger?"
+    ]
+  },
+  "generic": {
+    "daily": [
+      "What surprised you today?",
+      "What are you grateful for right now?",
+      "What challenged you today?",
+      "What did you learn about yourself?",
+      "What brought you joy today?",
+      "What would you do differently?",
+      "What are you looking forward to?",
+      "What made you feel proud?",
+      "What connection did you make today?",
+      "What wisdom did you gain?"
+    ]
+  }
+}

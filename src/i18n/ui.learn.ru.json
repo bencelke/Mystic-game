@@ -1,0 +1,22 @@
+{
+  "learn": {
+    "title": "Изучение",
+    "description": "Углубите свое понимание рун и нумерологии",
+    "resumePath": "Продолжить Путь",
+    "continue": "Продолжить",
+    "suggestedQuiz": "Рекомендуемая Викторина",
+    "startQuiz": "Начать Викторину",
+    "todaysReflection": "Размышление Дня",
+    "writeNote": "Написать Заметку",
+    "progressOverview": "Обзор Прогресса",
+    "runesProgress": "Прогресс Рун",
+    "numbersProgress": "Прогресс Чисел",
+    "quizAverage": "Средний Результат Викторины",
+    "noPath": "Нет активного пути обучения",
+    "startLearning": "Начать Обучение",
+    "runeBasics": "Основы Рун",
+    "numerologyJourney": "Путешествие в Нумерологию",
+    "perfectQuiz": "Идеальная Викторина",
+    "bestScore": "Лучший Результат"
+  }
+}

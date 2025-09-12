@@ -48,10 +48,13 @@ export function Navbar() {
 
   const navItems = [
     { href: '/', label: 'Home', icon: '🏠' },
-    { href: '/arcade', label: 'Explore', icon: '🔍' },
+    { href: '/arcade', label: 'Mystic', icon: '🔍' },
     { href: '/runes', label: 'Runes', icon: 'ᚱ' },
     { href: '/numerology', label: 'Numerology', icon: '🔢' },
-    { href: '/codex', label: 'Grimoire', icon: '📚' },
+    { href: '/book', label: 'Mystic Book', icon: '📚' },
+    { href: '/learn', label: 'Learn', icon: '📖' },
+    { href: '/journal', label: 'Journal', icon: '📝' },
+    { href: '/settings', label: 'Settings', icon: '⚙️' },
   ];
 
   return (

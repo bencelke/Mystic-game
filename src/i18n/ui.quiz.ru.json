@@ -1,0 +1,26 @@
+{
+  "quiz": {
+    "title": "Быстрый тест",
+    "startQuiz": "Начать тест",
+    "retakeQuiz": "Пересдать тест",
+    "testKnowledge": "Проверьте свои знания",
+    "question": "Вопрос",
+    "of": "из",
+    "next": "Далее",
+    "finish": "Завершить",
+    "correct": "Правильно!",
+    "incorrect": "Попробуйте еще раз",
+    "explanation": "Объяснение",
+    "quizComplete": "Тест завершен!",
+    "score": "Вы ответили правильно на {correct} из {total} вопросов ({percent}%)",
+    "xpEarned": "+{xp} очков опыта получено",
+    "perfectBonus": "Бонус за идеальный результат: +15 очков",
+    "noQuestions": "Вопросы пока недоступны",
+    "bestScore": "Лучший: {percent}%",
+    "attempts": "Попыток: {count}",
+    "lastScore": "Последний: {percent}%",
+    "lockedTitle": "Тест заблокирован",
+    "lockedMessage": "Откройте этот предмет в ритуале, чтобы разблокировать тест",
+    "unlockCTA": "Провести ритуал"
+  }
+}

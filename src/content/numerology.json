@@ -2,199 +2,89 @@
   {
     "id": 1,
     "name": "One",
-    "keywords": ["leadership", "independence", "pioneering", "initiative"],
-    "overview": "The number of new beginnings and leadership. Ones are natural-born leaders who possess strong independence and the courage to forge new paths.",
-    "strengths": "Natural leadership abilities, independence, courage, determination, originality, and the ability to inspire others.",
-    "challenges": "Can be overly dominant, impatient, or self-centered. May struggle with collaboration and delegation.",
-    "love": "Seek partners who respect their independence. They lead in relationships and need space to pursue their goals.",
-    "career": "Excel in leadership roles, entrepreneurship, and any field requiring initiative and innovation.",
-    "advice": [
-      "Learn to collaborate and delegate effectively",
-      "Practice patience with others' pace",
-      "Balance independence with partnership",
-      "Use your leadership to empower others"
-    ],
-    "shadow": "Tendency toward arrogance, impatience, and being overly controlling. May isolate themselves from others.",
-    "master": false
+    "overview": "The beginning, leadership, and independence. Number 1 represents new starts and taking initiative.",
+    "loreShort": "The first number symbolizes new beginnings and the power of individual will.",
+    "loreFull": "Number 1 is the foundation of all other numbers, representing the primal force of creation and the beginning of all things. In mystical traditions, it symbolizes the divine spark within each individual, the power to manifest one's desires through focused intention. Those influenced by this number are natural leaders, pioneers who blaze new trails and inspire others to follow. The energy of 1 is masculine, active, and forward-moving, always seeking to break free from limitations and create something new. In ancient numerology, 1 was associated with the Sun, the source of all life and light, representing the conscious mind and the power of focused thought.",
+    "keywords": ["leadership", "independence", "new beginnings", "initiative", "pioneering"]
   },
   {
     "id": 2,
     "name": "Two",
-    "keywords": ["cooperation", "diplomacy", "patience", "partnership"],
-    "overview": "The number of cooperation and partnership. Twos are natural diplomats who excel at bringing people together and finding harmony.",
-    "strengths": "Diplomatic skills, patience, cooperation, intuition, sensitivity, and the ability to mediate conflicts.",
-    "challenges": "Can be overly dependent, indecisive, or passive. May struggle with assertiveness and self-confidence.",
-    "love": "Thrive in committed partnerships. They are loyal, supportive, and seek emotional connection and harmony.",
-    "career": "Excel in counseling, mediation, team-based work, and any field requiring cooperation and diplomacy.",
-    "advice": [
-      "Develop assertiveness and self-confidence",
-      "Learn to make decisions independently",
-      "Balance giving with receiving",
-      "Trust your intuition and inner wisdom"
-    ],
-    "shadow": "Tendency toward codependency, passive-aggressive behavior, and losing themselves in relationships.",
-    "master": false
+    "overview": "Partnership, balance, and cooperation. Number 2 represents harmony and the power of working together.",
+    "loreShort": "The second number embodies partnership, balance, and the gentle power of cooperation.",
+    "loreFull": "Number 2 represents the principle of duality and the balance between opposing forces. It symbolizes partnership, cooperation, and the understanding that we are stronger together than apart. In mystical traditions, 2 is associated with the Moon, representing the feminine principle, intuition, and the subconscious mind. Those influenced by this number are natural diplomats, mediators who can see both sides of any situation and find peaceful solutions. The energy of 2 is receptive, patient, and nurturing, always seeking to create harmony and understanding. In ancient numerology, 2 was considered the number of the divine feminine, representing the receptive principle that allows creation to manifest.",
+    "keywords": ["partnership", "balance", "cooperation", "diplomacy", "intuition"]
   },
   {
     "id": 3,
     "name": "Three",
-    "keywords": ["creativity", "expression", "optimism", "communication"],
-    "overview": "The number of creativity and self-expression. Threes are natural communicators who bring joy and inspiration to others through their artistic talents.",
-    "strengths": "Creativity, communication skills, optimism, enthusiasm, artistic ability, and the gift of inspiration.",
-    "challenges": "Can be scattered, superficial, or overly dramatic. May struggle with focus and follow-through.",
-    "love": "Bring joy and excitement to relationships. They are expressive, romantic, and need partners who appreciate their creativity.",
-    "career": "Excel in arts, entertainment, writing, teaching, and any field requiring creativity and communication.",
-    "advice": [
-      "Focus your creative energy on meaningful projects",
-      "Develop discipline and follow-through",
-      "Balance fun with responsibility",
-      "Use your gifts to inspire and uplift others"
-    ],
-    "shadow": "Tendency toward superficiality, gossip, and avoiding difficult emotions through constant entertainment.",
-    "master": false
+    "overview": "Creativity, expression, and joy. Number 3 represents the power of communication and artistic expression.",
+    "loreShort": "The third number embodies creativity, self-expression, and the joy of communication.",
+    "loreFull": "Number 3 represents the creative force that brings ideas into manifestation through expression. It symbolizes the power of communication, whether through words, art, music, or any form of creative expression. In mystical traditions, 3 is associated with the trinity - body, mind, and spirit - representing the complete human being. Those influenced by this number are natural artists, communicators, and entertainers who bring joy and inspiration to others. The energy of 3 is optimistic, enthusiastic, and always seeking to share its gifts with the world. In ancient numerology, 3 was considered the number of the divine child, representing innocence, wonder, and the pure joy of creation.",
+    "keywords": ["creativity", "expression", "communication", "joy", "optimism"]
   },
   {
     "id": 4,
     "name": "Four",
-    "keywords": ["stability", "practicality", "hard work", "foundation"],
-    "overview": "The number of stability and foundation. Fours are the builders of the world, known for their reliability, hard work, and practical approach to life.",
-    "strengths": "Reliability, hard work, practicality, organization, attention to detail, and the ability to build lasting foundations.",
-    "challenges": "Can be rigid, overly cautious, or resistant to change. May struggle with flexibility and spontaneity.",
-    "love": "Seek stable, long-term relationships. They are loyal, dependable, and show love through practical actions.",
-    "career": "Excel in construction, engineering, accounting, and any field requiring systematic work and reliability.",
-    "advice": [
-      "Embrace change and flexibility when appropriate",
-      "Balance work with play and relaxation",
-      "Don't be afraid to take calculated risks",
-      "Appreciate the journey, not just the destination"
-    ],
-    "shadow": "Tendency toward stubbornness, workaholism, and being overly controlling or rigid in their approach.",
-    "master": false
+    "overview": "Stability, structure, and hard work. Number 4 represents the foundation upon which all else is built.",
+    "loreShort": "The fourth number embodies stability, structure, and the power of methodical progress.",
+    "loreFull": "Number 4 represents the solid foundation upon which all lasting achievements are built. It symbolizes stability, structure, and the power of methodical, step-by-step progress. In mystical traditions, 4 is associated with the four elements (earth, air, fire, water) and the four directions, representing the complete circle of existence. Those influenced by this number are practical, reliable, and hardworking individuals who understand that true success comes through patience and persistence. The energy of 4 is grounding, stabilizing, and always seeking to create order from chaos. In ancient numerology, 4 was considered the number of the earth, representing the material plane and the physical manifestation of spiritual principles.",
+    "keywords": ["stability", "structure", "hard work", "foundation", "practicality"]
   },
   {
     "id": 5,
     "name": "Five",
-    "keywords": ["freedom", "adventure", "change", "versatility"],
-    "overview": "The number of freedom and adventure. Fives are natural explorers who crave variety, change, and new experiences in life.",
-    "strengths": "Adaptability, versatility, curiosity, communication skills, and the courage to embrace change and new experiences.",
-    "challenges": "Can be restless, irresponsible, or commitment-phobic. May struggle with consistency and follow-through.",
-    "love": "Need freedom and variety in relationships. They are exciting partners but may struggle with long-term commitment.",
-    "career": "Excel in sales, travel, journalism, and any field requiring adaptability and communication.",
-    "advice": [
-      "Learn to balance freedom with responsibility",
-      "Develop consistency in important areas",
-      "Channel restlessness into productive pursuits",
-      "Practice commitment in small ways first"
-    ],
-    "shadow": "Tendency toward restlessness, irresponsibility, and avoiding commitment or deep emotional connections.",
-    "master": false
+    "overview": "Freedom, adventure, and change. Number 5 represents the restless spirit seeking new experiences.",
+    "loreShort": "The fifth number embodies freedom, adventure, and the restless spirit of exploration.",
+    "loreFull": "Number 5 represents the restless spirit that seeks freedom from limitations and the thrill of new experiences. It symbolizes change, adventure, and the power of adaptability in the face of life's constant flux. In mystical traditions, 5 is associated with the five senses and the five elements, representing the complete human experience in the physical world. Those influenced by this number are natural explorers, adventurers who thrive on change and new challenges. The energy of 5 is dynamic, unpredictable, and always seeking the next exciting opportunity. In ancient numerology, 5 was considered the number of the human being, representing the five-pointed star and the complete integration of spirit and matter.",
+    "keywords": ["freedom", "adventure", "change", "exploration", "adaptability"]
   },
   {
     "id": 6,
     "name": "Six",
-    "keywords": ["nurturing", "responsibility", "harmony", "service"],
-    "overview": "The number of nurturing and responsibility. Sixes are natural caregivers who find fulfillment in serving others and creating harmony in their environment.",
-    "strengths": "Nurturing nature, responsibility, compassion, artistic ability, and the gift of creating harmony and beauty.",
-    "challenges": "Can be overly controlling, self-sacrificing, or meddling. May struggle with boundaries and self-care.",
-    "love": "Are devoted, caring partners who prioritize family and relationships. They show love through service and care.",
-    "career": "Excel in healthcare, teaching, counseling, and any field requiring nurturing and service to others.",
-    "advice": [
-      "Set healthy boundaries and practice self-care",
-      "Learn to receive as well as give",
-      "Avoid being overly controlling or meddling",
-      "Balance service to others with personal needs"
-    ],
-    "shadow": "Tendency toward martyrdom, controlling behavior, and losing their own identity in service to others.",
-    "master": false
+    "overview": "Love, responsibility, and nurturing. Number 6 represents the power of unconditional love and service.",
+    "loreShort": "The sixth number embodies love, responsibility, and the nurturing power of the heart.",
+    "loreFull": "Number 6 represents the power of unconditional love and the responsibility to care for others. It symbolizes harmony, balance, and the nurturing energy that creates beautiful relationships and communities. In mystical traditions, 6 is associated with the six-pointed star, representing the perfect balance between heaven and earth, spirit and matter. Those influenced by this number are natural caregivers, healers who understand that true love means taking responsibility for the well-being of others. The energy of 6 is loving, protective, and always seeking to create harmony and beauty in the world. In ancient numerology, 6 was considered the number of the divine mother, representing the nurturing principle that sustains all life.",
+    "keywords": ["love", "responsibility", "nurturing", "harmony", "service"]
   },
   {
     "id": 7,
     "name": "Seven",
-    "keywords": ["introspection", "mystery", "analysis", "spirituality"],
-    "overview": "The number of introspection and spiritual seeking. Sevens are natural philosophers who seek deeper meaning and understanding in life.",
-    "strengths": "Analytical mind, intuition, spiritual awareness, wisdom, and the ability to see beyond surface appearances.",
-    "challenges": "Can be overly secretive, pessimistic, or isolated. May struggle with practical matters and social connections.",
-    "love": "Seek deep, meaningful connections. They need partners who understand their need for solitude and intellectual stimulation.",
-    "career": "Excel in research, analysis, spirituality, and any field requiring deep thinking and investigation.",
-    "advice": [
-      "Balance introspection with social connection",
-      "Share your wisdom with others",
-      "Don't become overly isolated or secretive",
-      "Trust your intuition while staying grounded"
-    ],
-    "shadow": "Tendency toward isolation, cynicism, and becoming lost in analysis without taking action.",
-    "master": false
+    "overview": "Spirituality, wisdom, and introspection. Number 7 represents the seeker of truth and inner knowledge.",
+    "loreShort": "The seventh number embodies spirituality, wisdom, and the quest for deeper understanding.",
+    "loreFull": "Number 7 represents the spiritual seeker who looks beyond the surface of things to find deeper meaning and truth. It symbolizes wisdom, introspection, and the power of inner knowing that comes through contemplation and meditation. In mystical traditions, 7 is associated with the seven chakras, seven days of creation, and the seven classical planets, representing the complete spiritual journey. Those influenced by this number are natural philosophers, mystics who understand that true wisdom comes from within. The energy of 7 is contemplative, mysterious, and always seeking to understand the deeper mysteries of existence. In ancient numerology, 7 was considered the most sacred number, representing the divine spark and the connection between heaven and earth.",
+    "keywords": ["spirituality", "wisdom", "introspection", "mystery", "contemplation"]
   },
   {
     "id": 8,
     "name": "Eight",
-    "keywords": ["authority", "material success", "power", "ambition"],
-    "overview": "The number of material success and authority. Eights are natural leaders in business and finance who understand the material world and how to achieve success.",
-    "strengths": "Business acumen, leadership, ambition, determination, and the ability to manifest material success.",
-    "challenges": "Can be overly materialistic, controlling, or work-obsessed. May struggle with work-life balance and emotional expression.",
-    "love": "Show love through providing and protecting. They need partners who understand their drive for success.",
-    "career": "Excel in business, finance, management, and any field requiring leadership and material success.",
-    "advice": [
-      "Balance material success with spiritual growth",
-      "Learn to express emotions and vulnerability",
-      "Use your power to help others succeed",
-      "Don't let work consume your personal life"
-    ],
-    "shadow": "Tendency toward greed, power-hungry behavior, and becoming overly focused on material success at the expense of relationships.",
-    "master": false
+    "overview": "Power, success, and material achievement. Number 8 represents the balance between spiritual and material worlds.",
+    "loreShort": "The eighth number embodies power, success, and the mastery of both spiritual and material realms.",
+    "loreFull": "Number 8 represents the power to manifest spiritual principles in the material world, creating both inner wisdom and outer success. It symbolizes the balance between giving and receiving, the understanding that true power comes from service to others. In mystical traditions, 8 is associated with the infinity symbol, representing the eternal flow of energy and the endless cycle of giving and receiving. Those influenced by this number are natural leaders who understand that true success comes from empowering others. The energy of 8 is powerful, confident, and always seeking to create positive change in the world. In ancient numerology, 8 was considered the number of karma, representing the law of cause and effect and the responsibility that comes with power.",
+    "keywords": ["power", "success", "achievement", "balance", "karma"]
   },
   {
     "id": 9,
     "name": "Nine",
-    "keywords": ["completion", "wisdom", "universal love", "service"],
-    "overview": "The number of completion and universal service. Nines are natural humanitarian who seek to make the world a better place through their wisdom and compassion.",
-    "strengths": "Wisdom, compassion, humanitarian spirit, artistic ability, and the gift of seeing the big picture.",
-    "challenges": "Can be overly idealistic, self-righteous, or emotionally distant. May struggle with practical matters and personal relationships.",
-    "love": "Seek relationships that serve a higher purpose. They are compassionate partners but may prioritize causes over personal connections.",
-    "career": "Excel in humanitarian work, healing, teaching, and any field requiring wisdom and service to humanity.",
-    "advice": [
-      "Balance idealism with practical action",
-      "Learn to receive love and support from others",
-      "Don't become overly self-righteous or judgmental",
-      "Use your wisdom to guide, not control, others"
-    ],
-    "shadow": "Tendency toward self-righteousness, emotional detachment, and becoming lost in causes while neglecting personal relationships.",
-    "master": false
+    "overview": "Completion, wisdom, and universal love. Number 9 represents the end of cycles and the beginning of new ones.",
+    "loreShort": "The ninth number embodies completion, universal love, and the wisdom that comes from experience.",
+    "loreFull": "Number 9 represents the completion of cycles and the wisdom that comes from having experienced all aspects of life. It symbolizes universal love, compassion, and the understanding that we are all connected in the great web of existence. In mystical traditions, 9 is associated with the nine muses, nine months of gestation, and the nine levels of consciousness, representing the complete journey of the soul. Those influenced by this number are natural teachers, healers who understand that true wisdom comes from serving others and sharing knowledge. The energy of 9 is compassionate, wise, and always seeking to help others reach their highest potential. In ancient numerology, 9 was considered the number of the divine, representing the complete circle of existence and the eternal return to the source.",
+    "keywords": ["completion", "wisdom", "universal love", "teaching", "compassion"]
   },
   {
     "id": 11,
     "name": "Eleven",
-    "keywords": ["intuition", "inspiration", "enlightenment", "psychic ability"],
-    "overview": "The master number of intuition and spiritual enlightenment. Elevens are natural spiritual teachers who possess heightened intuition and the ability to inspire others.",
-    "strengths": "Intuitive gifts, spiritual awareness, inspiration, teaching ability, and the power to connect with higher consciousness.",
-    "challenges": "Can be overly sensitive, nervous, or disconnected from reality. May struggle with grounding and practical matters.",
-    "love": "Seek deep, spiritual connections. They need partners who understand their sensitivity and spiritual nature.",
-    "career": "Excel in spiritual teaching, healing, counseling, and any field requiring intuition and inspiration.",
-    "advice": [
-      "Ground yourself through practical activities",
-      "Trust your intuition while staying balanced",
-      "Share your gifts without overwhelming others",
-      "Learn to manage your sensitivity constructively"
-    ],
-    "shadow": "Tendency toward nervousness, escapism, and becoming lost in spiritual pursuits while avoiding practical responsibilities.",
-    "master": true
+    "overview": "Intuition, inspiration, and spiritual awakening. Master Number 11 represents the bridge between heaven and earth.",
+    "loreShort": "Master Number 11 embodies intuition, inspiration, and the power of spiritual awakening.",
+    "loreFull": "Master Number 11 represents the bridge between the physical and spiritual worlds, the channel through which divine inspiration flows into human consciousness. It symbolizes intuition, psychic ability, and the power to receive messages from higher realms. In mystical traditions, 11 is associated with the eleven dimensions of consciousness and the eleven gates of spiritual initiation, representing the complete journey of the awakened soul. Those influenced by this number are natural channels, mediums who can receive and transmit spiritual guidance. The energy of 11 is highly intuitive, inspirational, and always seeking to connect with higher wisdom. In ancient numerology, 11 was considered the number of the spiritual teacher, representing the ability to guide others on their spiritual path.",
+    "keywords": ["intuition", "inspiration", "spiritual awakening", "psychic ability", "channeling"]
   },
   {
     "id": 22,
     "name": "Twenty-Two",
-    "keywords": ["master builder", "practical vision", "manifestation", "mastery"],
-    "overview": "The master number of the master builder. Twenty-Twos possess the rare ability to turn dreams into reality through practical action and visionary leadership.",
-    "strengths": "Visionary leadership, practical manifestation, master building abilities, and the power to create lasting change in the world.",
-    "challenges": "Can be overly controlling, perfectionistic, or overwhelmed by their own potential. May struggle with delegation and work-life balance.",
-    "love": "Seek partners who share their vision and can support their ambitious goals. They show love through building a better future together.",
-    "career": "Excel in large-scale projects, leadership, and any field requiring both vision and practical execution.",
-    "advice": [
-      "Learn to delegate and trust others",
-      "Balance perfectionism with progress",
-      "Don't become overwhelmed by your potential",
-      "Use your gifts to serve humanity's highest good"
-    ],
-    "shadow": "Tendency toward control issues, perfectionism, and becoming overwhelmed by the weight of their potential and responsibilities.",
-    "master": true
+    "overview": "Master builder, practical vision, and world service. Master Number 22 represents the power to manifest dreams into reality.",
+    "loreShort": "Master Number 22 embodies the power to build dreams into reality through practical vision and service.",
+    "loreFull": "Master Number 22 represents the master builder who can take spiritual vision and manifest it into practical reality. It symbolizes the power to create lasting change in the world through service, leadership, and the ability to inspire others to work together toward a common goal. In mystical traditions, 22 is associated with the 22 letters of the Hebrew alphabet and the 22 paths of the Tree of Life, representing the complete blueprint of creation. Those influenced by this number are natural visionaries, leaders who can see the big picture and inspire others to help make it real. The energy of 22 is powerful, practical, and always seeking to create positive change on a global scale. In ancient numerology, 22 was considered the number of the master teacher, representing the ability to guide humanity toward its highest potential.",
+    "keywords": ["master builder", "practical vision", "world service", "leadership", "manifestation"]
   }
 ]

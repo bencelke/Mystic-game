@@ -1,0 +1,24 @@
+{
+  "home": {
+    "title": "Мистик — Играй и Изучай",
+    "subtitle": "Откройте свой мистический путь через древнюю мудрость и космическое руководство",
+    "openMystic": "Открыть Мистик",
+    "openMysticBook": "Открыть Мистическую Книгу",
+    "today": "Сегодня",
+    "dailyRune": "Руна Дня",
+    "dailyNumber": "Число Дня",
+    "reveal": "Раскрыть",
+    "unlocked": "Разблокировано",
+    "locked": "Заблокировано",
+    "progress": "Прогресс",
+    "runes": "Руны",
+    "numbers": "Числа",
+    "quizzes": "Викторины",
+    "continueLearning": "Продолжить Обучение",
+    "resumePath": "Продолжить: {name} — Шаг {current}/{total}",
+    "startRuneBasics": "Начать Основы Рун",
+    "startNumerologyJourney": "Начать Путешествие в Нумерологию",
+    "bestAvg": "Лучший Ср",
+    "attempted": "Попыток"
+  }
+}
